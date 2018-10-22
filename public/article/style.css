@@ -1,0 +1,23 @@
+body {
+  font-family: "Lucida Grande";
+  font-size: 125%;
+}
+#container {
+  width: 66vw;
+  min-height: 100vh;
+  padding-left: 1vw;
+  padding-right: 1vw;
+  margin-left: 16vw;
+  border-left: 1px solid gray;
+  border-right: 1px solid gray;
+}
+#container > * {
+  margin: 0;
+}
+#content > * {
+  margin-top: 0;
+}
+#title,#header {
+  text-align: center;
+  font-weight: normal;
+}

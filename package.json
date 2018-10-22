@@ -1,0 +1,14 @@
+{
+  "name": "laikaivaikams3",
+  "version": "1.0.0",
+  "description": "Laikai Vaikams 3.0",
+  "main": "server.js",
+  "scripts": {
+    "test": "node server.js"
+  },
+  "author": "Simas Juknelis",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
