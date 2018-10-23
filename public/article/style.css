@@ -2,14 +2,22 @@ body {
   font-family: "Lucida Grande";
   font-size: 125%;
 }
+img {
+  width: 36.5vw;
+  height: auto;
+}
+hr {
+  margin-top: 20px !important;
+  margin-bottom: 20px !important;
+}
 #container {
-  width: 66vw;
+  width: 73vw;
   min-height: 100vh;
   padding-left: 1vw;
   padding-right: 1vw;
-  margin-left: 16vw;
-  border-left: 1px solid gray;
-  border-right: 1px solid gray;
+  margin-left: 12.5vw;
+  border-left: 1px solid #cccccc;
+  border-right: 1px solid #cccccc;
 }
 #container > * {
   margin: 0;
@@ -17,7 +25,19 @@ body {
 #content > * {
   margin-top: 0;
 }
-#title,#header {
-  text-align: center;
+#title,#left-header,#edition {
   font-weight: normal;
+}
+#left-header,#edition {
+  display: inline;
+}
+#edition {
+  text-align: right;
+  float: right;
+}
+#title {
+  text-align: center;
+}
+.image {
+  text-align: center;
 }

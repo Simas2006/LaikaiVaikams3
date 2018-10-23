@@ -1,66 +1,17 @@
 var template = {
   "title": "sage beige",
+  "edition": "2018 m. lapkricio",
   "objects": [
     {
       "type": "paragraph",
       "text": "hello world. my name is [b]sage[/b], this is\na newline and a [b]BOLD[/b]\n im still continuing to write"
-    },
-    {
-      "type": "image",
-      "src": "/public/images/sage.jpg",
-      "caption": "this is an example of the SAG"
-    },
-    {
-      "type": "image",
-      "src": "/public/images/sage.jpg",
-      "caption": "this is an example of the SAG"
-    },
-    {
-      "type": "image",
-      "src": "/public/images/sage.jpg",
-      "caption": "this is an example of the SAG"
-    },
-    {
-      "type": "image",
-      "src": "/public/images/sage.jpg",
-      "caption": "this is an example of the SAG"
-    },
-    {
-      "type": "image",
-      "src": "/public/images/sage.jpg",
-      "caption": "this is an example of the SAG"
-    },
-    {
-      "type": "image",
-      "src": "/public/images/sage.jpg",
-      "caption": "this is an example of the SAG"
-    },
-    {
-      "type": "image",
-      "src": "/public/images/sage.jpg",
-      "caption": "this is an example of the SAG"
-    },
-    {
-      "type": "image",
-      "src": "/public/images/sage.jpg",
-      "caption": "this is an example of the SAG"
-    },
-    {
-      "type": "image",
-      "src": "/public/images/sage.jpg",
-      "caption": "this is an example of the SAG"
-    },
-    {
-      "type": "image",
-      "src": "/public/images/sage.jpg",
-      "caption": "this is an example of the SAG"
-    },
-    
+    }
   ]
 }
 
 function renderFile(file) {
   document.getElementById("title").innerText = file.title;
+  document.getElementById("edition").innerText = file.edition;
   var objects = file.objects;
   var content = document.getElementById("content");
   for ( var i = 0; i < objects.length; i++ ) {
