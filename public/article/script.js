@@ -1,14 +1,3 @@
-var template = {
-  "title": "sage beige",
-  "edition": "2018 m. lapkricio",
-  "objects": [
-    {
-      "type": "paragraph",
-      "text": "hello world. my name is [b]sage[/b], this is\na newline and a [b]BOLD[/b]\n im still continuing to write"
-    }
-  ]
-}
-
 function renderFile(file) {
   document.getElementById("title").innerText = file.title;
   document.getElementById("edition").innerText = file.edition;
@@ -49,6 +38,19 @@ function renderFile(file) {
   }
 }
 
+function queryFile(callback) {
+  var req = new XMLHttpRequest();
+  req.onload = function() {
+    if ( this.responseText == "Bad Request" ) {
+      alert("Failed to load the article. Please try again.");
+      return;
+    }
+    callback(JSON.parse(this.responseText));
+  }
+  req.open("GET",`/article_data?file=${localStorage.getItem("file")}&index=${localStorage.getItem("index")}`);
+  req.send();
+}
+
 window.onload = function() {
-  renderFile(template);
+  queryFile(renderFile);
 }
