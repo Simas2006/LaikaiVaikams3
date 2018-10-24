@@ -28,26 +28,41 @@ app.get("/edition_data",function(request,response) {
     response.sendStatus(400);
     return;
   }
-  fs.readFile(`${__dirname}/editions/${request.query.file}.json`,function(err,data) {
-    if ( err ) {
-      response.sendStatus(400);
-      if ( err.code != "ENOENT" ) console.error(err);
-      return;
-    }
-    data = JSON.parse(data);
-    var format = {
-      edition: data[0].edition,
-      articles: data.map(item => {return {
-        title: item.title,
-        thumbnail: item.thumbnail
-      }})
-    }
-    response.send(JSON.stringify(format));
-  });
+  if ( request.query.file == "latest" ) {
+    fs.readFile(__dirname + "/editions/latest",function(err,data) {
+      if ( err ) {
+        response.sendStatus(500);
+        return;
+      }
+      data = data.toString().trim();
+      merge(data,true);
+    });
+  } else {
+    merge(request.query.file,false);
+  }
+  function merge(file,latest) {
+    fs.readFile(`${__dirname}/editions/${file}.json`,function(err,data) {
+      if ( err ) {
+        response.sendStatus(400);
+        if ( err.code != "ENOENT" ) console.error(err);
+        return;
+      }
+      data = JSON.parse(data);
+      var format = {
+        edition: data[0].edition,
+        articles: data.map(item => {return {
+          title: item.title,
+          thumbnail: item.thumbnail
+        }})
+      }
+      if ( latest ) format.setFile = file;
+      response.send(JSON.stringify(format));
+    });
+  }
 });
 
 app.get("/",function(request,response) {
-  response.redirect("/public");
+  response.redirect("/public/home");
 });
 
 app.listen(PORT,function() {

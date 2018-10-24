@@ -36,12 +36,15 @@ function queryMenu(callback) {
       alert("Failed to load the page. Please try again.");
       return;
     }
-    callback(JSON.parse(this.responseText));
+    var data = JSON.parse(this.responseText);
+    if ( data.setFile ) sessionStorage.setItem("file",data.setFile);
+    callback(data);
   }
   req.open("GET",`/edition_data?file=${sessionStorage.getItem("file")}`);
   req.send();
 }
 
 window.onload = function() {
+  if ( ! sessionStorage.getItem("file") ) sessionStorage.setItem("file","latest");
   queryMenu(renderMenu);
 }
