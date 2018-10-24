@@ -11,11 +11,11 @@ hr {
   margin-bottom: 20px !important;
 }
 #container {
-  width: 73vw;
+  width: 83vw;
   min-height: 100vh;
   padding-left: 1vw;
   padding-right: 1vw;
-  margin-left: 12.5vw;
+  margin-left: 7.5vw;
   border-left: 1px solid #cccccc;
   border-right: 1px solid #cccccc;
 }
