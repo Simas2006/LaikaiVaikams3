@@ -16,7 +16,14 @@ function renderList(list) {
     }
     if ( ! list[i] ) break;
     var li = document.createElement("li");
-    li.innerText = list[i].edition;
+    var a = document.createElement("a");
+    a.innerText = list[i].edition;
+    a["data-id"] = i;
+    a.onclick = function() {
+      sessionStorage.setItem("file",list[this["data-id"]].file);
+      location.href = "/public/home";
+    }
+    li.appendChild(a);
     activeUL.appendChild(li);
   }
 }

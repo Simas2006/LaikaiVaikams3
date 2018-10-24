@@ -6,3 +6,8 @@ h2 {
   text-align: center;
   margin: 0;
 }
+a {
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
+}
