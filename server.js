@@ -31,6 +31,7 @@ app.get("/edition_data",function(request,response) {
   if ( request.query.file == "latest" ) {
     fs.readFile(__dirname + "/editions/manifest.json",function(err,data) {
       if ( err ) {
+        console.error(err);
         response.sendStatus(500);
         return;
       }
@@ -59,6 +60,17 @@ app.get("/edition_data",function(request,response) {
       response.send(JSON.stringify(format));
     });
   }
+});
+
+app.get("/list_data",function(request,response) {
+  fs.readFile(__dirname + "/editions/manifest.json",function(err,data) {
+    if ( err ) {
+      console.error(err);
+      response.sendStatus(500);
+      return;
+    }
+    response.send(data.toString());
+  });
 });
 
 app.get("/",function(request,response) {
