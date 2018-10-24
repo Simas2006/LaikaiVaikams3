@@ -6,7 +6,7 @@ function renderMenu(edition) {
   for ( var i = 0; i < articles.length; i++ ) {
     var col = document.createElement("td");
     col.onclick = function() {
-      localStorage.setItem("index",this["data-id"]);
+      sessionStorage.setItem("index",this["data-id"]);
       location.href = "/public/article";
     }
     col["data-id"] = i;
@@ -38,7 +38,7 @@ function queryMenu(callback) {
     }
     callback(JSON.parse(this.responseText));
   }
-  req.open("GET",`/edition_data?file=${localStorage.getItem("file")}`);
+  req.open("GET",`/edition_data?file=${sessionStorage.getItem("file")}`);
   req.send();
 }
 

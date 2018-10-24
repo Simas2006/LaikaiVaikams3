@@ -47,7 +47,7 @@ function queryFile(callback) {
     }
     callback(JSON.parse(this.responseText));
   }
-  req.open("GET",`/article_data?file=${localStorage.getItem("file")}&index=${localStorage.getItem("index")}`);
+  req.open("GET",`/article_data?file=${sessionStorage.getItem("file")}&index=${sessionStorage.getItem("index")}`);
   req.send();
 }
 
