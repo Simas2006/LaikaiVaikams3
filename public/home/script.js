@@ -2,7 +2,7 @@ function renderMenu(edition) {
   var articles = edition.articles;
   var menu = document.getElementById("menu");
   var row = document.createElement("tr");
-  var odds = true;
+  var odds = false;
   for ( var i = 0; i < articles.length; i++ ) {
     var col = document.createElement("td");
     col.onclick = function() {
@@ -14,6 +14,7 @@ function renderMenu(edition) {
     var img = document.createElement("img");
     img.src = articles[i].thumbnail;
     col.appendChild(img);
+    col.appendChild(document.createElement("br"));
     var span = document.createElement("span");
     span.innerText = articles[i].title;
     col.appendChild(span);

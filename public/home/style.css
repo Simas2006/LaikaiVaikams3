@@ -10,7 +10,11 @@ td {
   text-align: center;
 }
 img {
-  width: 37.5vw;
+  height: 30vh;
+  width: auto;
+}
+h2 {
+  margin-bottom: 0;
 }
 #menu {
   width: 75vw;
@@ -18,4 +22,8 @@ img {
 }
 td.link {
   cursor: pointer;
+}
+.slogan {
+  font-size: 25%;
+  margin: 0;
 }
