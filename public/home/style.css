@@ -16,6 +16,9 @@ img:not(.icon) {
 h2 {
   margin: 0;
 }
+a {
+  color: blue;
+}
 #menu {
   width: 75vw;
   margin-left: 12.5vw;
@@ -32,9 +35,6 @@ h2 {
   text-align: right;
   vertical-align: bottom;
 }
-#right-header > a {
-  color: blue;
-}
 td.link {
   cursor: pointer;
 }
@@ -43,5 +43,9 @@ img.icon {
 }
 .slogan {
   font-size: 75%;
+  margin: 0;
+}
+.copyright {
+  font-size: 50%;
   margin: 0;
 }
