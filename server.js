@@ -29,13 +29,13 @@ app.get("/edition_data",function(request,response) {
     return;
   }
   if ( request.query.file == "latest" ) {
-    fs.readFile(__dirname + "/editions/latest",function(err,data) {
+    fs.readFile(__dirname + "/editions/manifest.json",function(err,data) {
       if ( err ) {
         response.sendStatus(500);
         return;
       }
-      data = data.toString().trim();
-      merge(data,true);
+      data = JSON.parse(data.toString());
+      merge(data[data.length - 1].file,true);
     });
   } else {
     merge(request.query.file,false);
