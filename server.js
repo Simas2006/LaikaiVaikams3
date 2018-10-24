@@ -7,30 +7,30 @@ app.use("/public",express.static(__dirname + "/public"));
 
 app.get("/article_data",function(request,response) {
   if ( request.query.file.indexOf("..") > -1 ) {
-    response.send(400);
+    response.sendStatus(400);
     return;
   }
   fs.readFile(`${__dirname}/editions/${request.query.file}.json`,function(err,data) {
     if ( err ) {
-      response.send(400);
+      response.sendStatus(400);
       if ( err.code != "ENOENT" ) console.error(err);
       return;
     }
     data = JSON.parse(data);
     var index = parseInt(request.query.index);
     if ( data[index] ) response.send(JSON.stringify(data[index]));
-    else response.send(400);
+    else response.sendStatus(400);
   });
 });
 
 app.get("/edition_data",function(request,response) {
   if ( request.query.file.indexOf("..") > -1 ) {
-    response.send(400);
+    response.sendStatus(400);
     return;
   }
   fs.readFile(`${__dirname}/editions/${request.query.file}.json`,function(err,data) {
     if ( err ) {
-      response.send(400);
+      response.sendStatus(400);
       if ( err.code != "ENOENT" ) console.error(err);
       return;
     }
