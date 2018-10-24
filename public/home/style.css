@@ -16,3 +16,6 @@ img {
   width: 75vw;
   margin-left: 12.5vw;
 }
+td.link {
+  cursor: pointer;
+}

@@ -6,9 +6,11 @@ function renderMenu(edition) {
   for ( var i = 0; i < articles.length; i++ ) {
     var col = document.createElement("td");
     col.onclick = function() {
-      alert(this["data-id"]);
+      localStorage.setItem("index",this["data-id"]);
+      location.href = "/public/article";
     }
     col["data-id"] = i;
+    col.className = "link";
     var img = document.createElement("img");
     img.src = articles[i].thumbnail;
     col.appendChild(img);
