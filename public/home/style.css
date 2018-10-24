@@ -9,21 +9,39 @@ td {
   width: 37.5vw;
   text-align: center;
 }
-img {
+img:not(.icon) {
   height: 30vh;
   width: auto;
 }
 h2 {
-  margin-bottom: 0;
+  margin: 0;
 }
 #menu {
   width: 75vw;
   margin-left: 12.5vw;
 }
+#top-header {
+  text-align: center;
+}
+#left-header {
+  width: 50vw;
+  text-align: left;
+}
+#right-header {
+  width: 50vw;
+  text-align: right;
+  vertical-align: bottom;
+}
+#right-header > a {
+  color: blue;
+}
 td.link {
   cursor: pointer;
 }
+img.icon {
+  border: 1px solid black;
+}
 .slogan {
-  font-size: 25%;
+  font-size: 75%;
   margin: 0;
 }
