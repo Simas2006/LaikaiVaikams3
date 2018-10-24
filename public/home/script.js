@@ -26,6 +26,7 @@ function renderMenu(edition) {
     odds = ! odds;
   }
   menu.appendChild(row);
+  document.getElementById("edition").innerText = edition.edition;
 }
 
 function queryMenu(callback) {
