@@ -1,1 +1,14 @@
-[{"file":"2017_november","edition":"2017 m. lapkricio"},{"file":"2018_spalio","edition":"2017 m. lapkricio"},{"file":"2018_november","edition":"2017 m. lapkricio"}]
+[
+  {
+    "file": "2017_november",
+    "edition": "2017 m. lapkricio"
+  },
+  {
+    "file": "2018_spalio",
+    "edition": "2017 m. lapkricio"
+  },
+  {
+    "file": "2018_november",
+    "edition": "2017 m. lapkricio"
+  }
+]

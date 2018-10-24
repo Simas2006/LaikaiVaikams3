@@ -69,7 +69,7 @@ app.get("/list_data",function(request,response) {
       response.sendStatus(500);
       return;
     }
-    response.send(data.toString());
+    response.send(JSON.stringify(JSON.parse(data.toString())));
   });
 });
 
