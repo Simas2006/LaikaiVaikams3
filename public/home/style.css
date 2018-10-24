@@ -10,7 +10,7 @@ td {
   text-align: center;
 }
 img:not(.icon) {
-  height: 30vh;
+  height: 100%;
   width: auto;
 }
 h2 {
@@ -19,9 +19,11 @@ h2 {
 a {
   color: blue;
 }
+#menu-container {
+  margin-left: 12.5%;
+}
 #menu {
   width: 75vw;
-  margin-left: 12.5vw;
 }
 #top-header {
   text-align: center;
