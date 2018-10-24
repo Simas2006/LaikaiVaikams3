@@ -1,4 +1,6 @@
 body {
+  background-color: var(--bg-color);
+  color: var(--fg-color);
   font-family: "Lucida Grande";
   font-size: 125%;
 }
@@ -7,7 +9,7 @@ h2 {
   margin: 0;
 }
 a {
-  color: blue;
+  color: var(--link-color);
   text-decoration: underline;
   cursor: pointer;
 }
