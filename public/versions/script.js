@@ -26,6 +26,15 @@ function renderList(list) {
     li.appendChild(a);
     activeUL.appendChild(li);
   }
+  var li = document.createElement("li");
+  var a = document.createElement("a");
+  a.innerText = "I naujausia versija";
+  a.onclick = function() {
+    sessionStorage.setItem("file",list[list.length - 1].file);
+    location.href = "/public/home";
+  }
+  li.appendChild(a);
+  obj.appendChild(li);
 }
 
 function queryList(callback) {
