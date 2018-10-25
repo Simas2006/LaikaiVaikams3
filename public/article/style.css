@@ -33,6 +33,9 @@ hr {
 #left-header,#edition {
   display: inline;
 }
+#left-header > a {
+  color: black;
+}
 #edition {
   text-align: right;
   float: right;
