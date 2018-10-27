@@ -1,3 +1,16 @@
+body {
+  font-family: "Lucida Grande";
+  font-size: 125%;
+}
+img {
+  width: 36.5vw;
+  height: auto;
+}
+input {
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+}
 #article {
   width: 83vw;
   min-height: 100vh;
@@ -20,4 +33,13 @@
   font-size: 120%;
   background-color: white;
   border: 1px solid #dddddd;
+}
+.image {
+  text-align: center;
+}
+.caption {
+  width: 100%;
+  font-size: 100%;
+  text-align: center;
+  font-style: italic;
 }
