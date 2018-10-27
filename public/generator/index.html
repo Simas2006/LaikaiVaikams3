@@ -7,7 +7,16 @@
   <script src="script.js"></script>
 </head>
 <body>
-  <input type="file" id="filePicker" onchange="selectFile()" />
+  <input type="file" id="filePicker" />
   <img id="uploaded" />
+  <div id="article">
+    <div id="content"></div>
+    <hr />
+    <div id="buttonPanel">
+      <button onclick="addParagraph()">+☰</button>
+      <button onclick="addImage()">+📷</button>
+      <button onclick="addHorizontal()">+—</button>
+    </div>
+  </div>
 </body>
 </html>

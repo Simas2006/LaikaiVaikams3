@@ -1,0 +1,23 @@
+#article {
+  width: 83vw;
+  min-height: 100vh;
+  padding-left: 1vw;
+  padding-right: 1vw;
+  margin-left: 7.5vw;
+  border-left: 1px solid #cccccc;
+  border-right: 1px solid #cccccc;
+}
+#filePicker {
+  display: none;
+}
+#buttonPanel {
+  text-align: center;
+}
+#buttonPanel > button {
+  height: 50px;
+  padding-left: 15px;
+  padding-right: 15px;
+  font-size: 120%;
+  background-color: white;
+  border: 1px solid #dddddd;
+}
