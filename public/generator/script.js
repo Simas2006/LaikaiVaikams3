@@ -1,3 +1,14 @@
+function addParagraph() {
+  var textarea = document.createElement("textarea");
+  textarea.onkeydown = textarea.onkeyup = function() {
+    this.style.height = "1px";
+    this.style.height = this.scrollHeight + "px";
+  }
+  textarea.placeholder = "Tekstas...";
+  textarea.className = "paragraph";
+  document.getElementById("content").appendChild(textarea);
+}
+
 function addImage() {
   var picker = document.getElementById("filePicker");
   picker.onchange = function() {
@@ -13,7 +24,7 @@ function addImage() {
       var caption = document.createElement("input");
       caption.className = "caption";
       p.appendChild(caption);
-      content.appendChild(p);
+      document.getElementById("content").appendChild(p);
     }
     if ( file ) {
       if ( file.name.toLowerCase().endsWith(".jpg") || file.name.toLowerCase().endsWith(".png") || file.name.toLowerCase().endsWith(".tiff") ) reader.readAsDataURL(file);

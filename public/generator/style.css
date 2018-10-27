@@ -6,10 +6,11 @@ img {
   width: 36.5vw;
   height: auto;
 }
-input {
+input,textarea {
   border-top: 0;
   border-left: 0;
   border-right: 0;
+  border-bottom: 1px solid #dddddd;
 }
 #article {
   width: 83vw;
@@ -42,4 +43,8 @@ input {
   font-size: 100%;
   text-align: center;
   font-style: italic;
+}
+.paragraph {
+  width: 100%;
+  font-size: 100%;
 }
