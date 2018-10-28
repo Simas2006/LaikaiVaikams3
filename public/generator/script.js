@@ -10,6 +10,7 @@ function renderScreen() {
   }
   for ( var i = 0; i < objects.length; i++ ) {
     if ( objects[i].type == "paragraph" ) {
+      var div = document.createElement("div");
       var textarea = document.createElement("textarea");
       textarea["data-object-index"] = i;
       textarea.onkeydown = textarea.onkeyup = function() {
@@ -17,10 +18,11 @@ function renderScreen() {
         objects[this["data-object-index"]].text = this.value;
       }
       textarea.value = objects[i].text;
-      textarea.placeholder = "Tekstas...";
+      textarea.placeholder = "Zodziai...";
       textarea.className = "paragraph";
       textarea.rows = textarea.value.split("\n").length;
-      content.appendChild(textarea);
+      div.appendChild(textarea);
+      content.appendChild(div);
     } else if ( objects[i].type == "image" ) {
       var p = document.createElement("p");
       p.className = "image";
@@ -37,6 +39,8 @@ function renderScreen() {
       }
       p.appendChild(caption);
       content.appendChild(p);
+    } else if ( objects[i].type == "hline" ) {
+      content.appendChild(document.createElement("hr"));
     }
   }
 }
@@ -67,4 +71,11 @@ function addImage() {
     }
   }
   picker.click();
+}
+
+function addHorizontal() {
+  file.objects.push({
+    "type": "hline"
+  });
+  renderScreen();
 }
