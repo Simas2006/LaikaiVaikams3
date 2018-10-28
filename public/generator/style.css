@@ -12,6 +12,9 @@ input,textarea {
   border-right: 0;
   border-bottom: 1px solid #dddddd;
 }
+textarea {
+  margin-top: 10px;
+}
 #article {
   width: 83vw;
   min-height: 100vh;
@@ -37,6 +40,7 @@ input,textarea {
 }
 .image {
   text-align: center;
+  margin: 0;
 }
 .caption {
   width: 100%;
@@ -47,4 +51,10 @@ input,textarea {
 .paragraph {
   width: 100%;
   font-size: 100%;
+}
+.buttonPanel,.buttonPanel > button {
+  margin: 0;
+}
+.buttonPanel > button {
+  border: 0;
 }

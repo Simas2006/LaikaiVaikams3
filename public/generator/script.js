@@ -23,6 +23,36 @@ function renderScreen() {
       textarea.rows = textarea.value.split("\n").length;
       div.appendChild(textarea);
       content.appendChild(div);
+      var panel = document.createElement("div");
+      panel.className = "buttonPanel";
+      var labels = ["↑","↓","X","B"];
+      var functions = [
+        function() {
+          var element = objects[this["data-object-index"]];
+          objects.splice(this["data-object-index"],1);
+          objects.splice(Math.max(this["data-object-index"] - 1,0),0,element);
+          renderScreen();
+        },
+        function() {
+          var element = objects[this["data-object-index"]];
+          objects.splice(this["data-object-index"],1);
+          objects.splice(Math.min(this["data-object-index"] + 1,objects.length),0,element);
+          renderScreen();
+        },
+        function() {
+          var element = objects[this["data-object-index"]];
+          objects.splice(this["data-object-index"],1);
+          renderScreen();
+        }
+      ];
+      for ( var j = 0; j < labels.length; j++ ) {
+        var button = document.createElement("button");
+        button.innerText = labels[j];
+        button["data-object-index"] = i;
+        button.onclick = functions[j];
+        panel.appendChild(button);
+      }
+      content.appendChild(panel);
     } else if ( objects[i].type == "image" ) {
       var p = document.createElement("p");
       p.className = "image";
