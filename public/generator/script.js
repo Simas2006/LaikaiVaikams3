@@ -1,33 +1,69 @@
-function addParagraph() {
-  var textarea = document.createElement("textarea");
-  textarea.onkeydown = textarea.onkeyup = function() {
-    this.style.height = "1px";
-    this.style.height = this.scrollHeight + "px";
+var file = {
+  objects: []
+}
+
+function renderScreen() {
+  var content = document.getElementById("content");
+  var objects = file.objects;
+  while ( content.firstChild ) {
+    content.removeChild(content.firstChild);
   }
-  textarea.placeholder = "Tekstas...";
-  textarea.className = "paragraph";
-  document.getElementById("content").appendChild(textarea);
+  for ( var i = 0; i < objects.length; i++ ) {
+    if ( objects[i].type == "paragraph" ) {
+      var textarea = document.createElement("textarea");
+      textarea["data-object-index"] = i;
+      textarea.onkeydown = textarea.onkeyup = function() {
+        this.rows = this.value.split("\n").length;
+        objects[this["data-object-index"]].text = this.value;
+      }
+      textarea.value = objects[i].text;
+      textarea.placeholder = "Tekstas...";
+      textarea.className = "paragraph";
+      textarea.rows = textarea.value.split("\n").length;
+      content.appendChild(textarea);
+    } else if ( objects[i].type == "image" ) {
+      var p = document.createElement("p");
+      p.className = "image";
+      var img = document.createElement("img");
+      img.src = objects[i].src;
+      p.appendChild(img);
+      p.appendChild(document.createElement("br"));
+      var caption = document.createElement("input");
+      caption["data-object-index"] = i;
+      caption.className = "caption";
+      caption.value = objects[i].caption;
+      caption.onkeydown = caption.onkeyup = function() {
+        objects[this["data-object-index"]].caption = this.value;
+      }
+      p.appendChild(caption);
+      content.appendChild(p);
+    }
+  }
+}
+
+function addParagraph() {
+  file.objects.push({
+    "type": "paragraph",
+    "text": ""
+  });
+  renderScreen();
 }
 
 function addImage() {
   var picker = document.getElementById("filePicker");
   picker.onchange = function() {
-    var file = this.files[0];
+    var selectedImage = this.files[0];
     var reader = new FileReader();
     reader.onloadend = function() {
-      var p = document.createElement("p");
-      p.className = "image";
-      var img = document.createElement("img");
-      img.src = reader.result;
-      p.appendChild(img);
-      p.appendChild(document.createElement("br"));
-      var caption = document.createElement("input");
-      caption.className = "caption";
-      p.appendChild(caption);
-      document.getElementById("content").appendChild(p);
+      file.objects.push({
+        "type": "image",
+        "src": reader.result,
+        "caption": ""
+      });
+      renderScreen();
     }
-    if ( file ) {
-      if ( file.name.toLowerCase().endsWith(".jpg") || file.name.toLowerCase().endsWith(".png") || file.name.toLowerCase().endsWith(".tiff") ) reader.readAsDataURL(file);
+    if ( selectedImage ) {
+      if ( selectedImage.name.toLowerCase().endsWith(".jpg") || selectedImage.name.toLowerCase().endsWith(".png") || selectedImage.name.toLowerCase().endsWith(".tiff") ) reader.readAsDataURL(selectedImage);
     }
   }
   picker.click();
