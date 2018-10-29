@@ -12,6 +12,9 @@ input,.paragraph {
   border-right: 0;
   border-bottom: 1px solid #dddddd;
 }
+hr.hline {
+  margin-bottom: 0;
+}
 #article {
   width: 83vw;
   min-height: 100vh;
