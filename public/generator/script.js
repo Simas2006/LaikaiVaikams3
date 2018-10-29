@@ -11,16 +11,15 @@ function renderScreen() {
   for ( var i = 0; i < objects.length; i++ ) {
     if ( objects[i].type == "paragraph" ) {
       var div = document.createElement("div");
-      var textarea = document.createElement("textarea");
+      var textarea = document.createElement("div");
       textarea["data-object-index"] = i;
       textarea.onkeydown = textarea.onkeyup = function() {
-        this.rows = this.value.split("\n").length;
-        objects[this["data-object-index"]].text = this.value;
+        objects[this["data-object-index"]].text = this.innerHTML;
       }
-      textarea.value = objects[i].text;
+      textarea.innerHTML = objects[i].text;
       textarea.placeholder = "Zodziai...";
       textarea.className = "paragraph";
-      textarea.rows = textarea.value.split("\n").length;
+      textarea.contentEditable = "true";
       div.appendChild(textarea);
       content.appendChild(div);
       var panel = document.createElement("div");
@@ -43,6 +42,12 @@ function renderScreen() {
           var element = objects[this["data-object-index"]];
           objects.splice(this["data-object-index"],1);
           renderScreen();
+        },
+        function() {
+          document.execCommand("bold");
+          objects[this["data-object-index"]].boldSet = ! objects[this["data-object-index"]].boldSet;
+          if ( objects[this["data-object-index"]].boldSet ) this.style.fontWeight = "bold";
+          else this.style.fontWeight = "normal";
         }
       ];
       for ( var j = 0; j < labels.length; j++ ) {
@@ -78,7 +83,8 @@ function renderScreen() {
 function addParagraph() {
   file.objects.push({
     "type": "paragraph",
-    "text": ""
+    "text": "",
+    "boldSet": false
   });
   renderScreen();
 }

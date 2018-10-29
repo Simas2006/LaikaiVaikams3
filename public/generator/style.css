@@ -6,14 +6,11 @@ img {
   width: 36.5vw;
   height: auto;
 }
-input,textarea {
+input,.paragraph {
   border-top: 0;
   border-left: 0;
   border-right: 0;
   border-bottom: 1px solid #dddddd;
-}
-textarea {
-  margin-top: 10px;
 }
 #article {
   width: 83vw;
@@ -51,6 +48,7 @@ textarea {
 .paragraph {
   width: 100%;
   font-size: 100%;
+  margin-top: 10px;
 }
 .buttonPanel,.buttonPanel > button {
   margin: 0;
