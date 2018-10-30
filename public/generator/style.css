@@ -15,7 +15,7 @@ input,.paragraph {
 hr.hline {
   margin-bottom: 0;
 }
-#article {
+#container {
   width: 83vw;
   min-height: 100vh;
   padding-left: 1vw;
@@ -23,6 +23,9 @@ hr.hline {
   margin-left: 7.5vw;
   border-left: 1px solid #cccccc;
   border-right: 1px solid #cccccc;
+}
+#container {
+  margin-top: 0;
 }
 #filePicker {
   display: none;
@@ -37,6 +40,16 @@ hr.hline {
   font-size: 120%;
   background-color: white;
   border: 1px solid #dddddd;
+}
+#title,#edition {
+  font-weight: normal;
+  margin: 0;
+}
+#title {
+  text-align: center;
+}
+#edition {
+  text-align: right;
 }
 .image {
   text-align: center;
