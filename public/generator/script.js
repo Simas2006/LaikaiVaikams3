@@ -20,6 +20,20 @@ function renderScreen() {
       textarea.innerHTML = objects[i].text;
       textarea.className = "paragraph";
       textarea.contentEditable = "true";
+      textarea.onfocus = function() {
+        var obj = objects[this["data-object-index"]];
+        obj.focused = true;
+        if ( obj.toggleBold ) {
+          obj.boldSet = ! obj.boldSet;
+          obj.toggleBold = false;
+          setTimeout(function() {
+            document.execCommand("bold");
+          },10);
+        }
+      }
+      textarea.onblur = function() {
+        objects[this["data-object-index"]].focused = false;
+      }
       div.appendChild(textarea);
       content.appendChild(div);
       labels.push("B");
@@ -65,10 +79,14 @@ function renderScreen() {
         renderScreen();
       },
       function() {
-        document.execCommand("bold");
-        objects[this["data-object-index"]].boldSet = ! objects[this["data-object-index"]].boldSet;
-        if ( objects[this["data-object-index"]].boldSet ) this.style.fontWeight = "bold";
-        else this.style.fontWeight = "normal";
+        var obj = objects[this["data-object-index"]];
+        if ( obj.focused ) {
+          document.execCommand("bold");
+          obj.boldSet = ! obj.boldSet;
+        } else {
+          obj.toggleBold = ! obj.toggleBold;
+        }
+        this.style.fontWeight = (this.style.fontWeight == "bold" ? "normal" : "bold");
       }
     ];
     for ( var j = 0; j < labels.length; j++ ) {
@@ -86,7 +104,9 @@ function addParagraph() {
   file.objects.push({
     "type": "paragraph",
     "text": "",
-    "boldSet": false
+    "boldSet": false,
+    "focused": false,
+    "toggleBold": false
   });
   renderScreen();
 }
