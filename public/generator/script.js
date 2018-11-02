@@ -1,5 +1,8 @@
 var file = {
-  objects: []
+  "title": "",
+  "edition": "",
+  "objects": [],
+  "thumbnail": null
 }
 
 function renderScreen() {
@@ -136,4 +139,13 @@ function addHorizontal() {
     "type": "hline"
   });
   renderScreen();
+}
+
+window.onload = function() {
+  document.getElementById("title").onchange = function() {
+    file.title = this.value;
+  }
+  document.getElementById("edition").onchange = function() {
+    file.edition = this.value;
+  }
 }

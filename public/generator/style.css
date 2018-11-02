@@ -1,4 +1,4 @@
-body {
+body,input {
   font-family: "Lucida Grande";
   font-size: 125%;
 }
@@ -23,9 +23,10 @@ hr.hline {
   margin-left: 7.5vw;
   border-left: 1px solid #cccccc;
   border-right: 1px solid #cccccc;
-}
-#container {
   margin-top: 0;
+}
+#content {
+  min-height: 25px;
 }
 #filePicker {
   display: none;
@@ -47,9 +48,15 @@ hr.hline {
 }
 #title {
   text-align: center;
+  width: 100%;
+  font-size: 200%;
 }
 #edition {
   text-align: right;
+  width: 33%;
+  margin-left: 66%;
+  margin-right: 0;
+  font-size: 115%;
 }
 .image {
   text-align: center;
