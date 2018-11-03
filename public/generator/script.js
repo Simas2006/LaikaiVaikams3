@@ -148,6 +148,7 @@ function setThumbnail() {
     var reader = new FileReader();
     reader.onloadend = function() {
       file.thumbnail = reader.result;
+      document.getElementById("thumbnailButton").innerText = "Nustatyt Antraste ✓";
       renderScreen();
     }
     if ( selectedImage ) {
