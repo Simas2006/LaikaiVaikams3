@@ -141,6 +141,22 @@ function addHorizontal() {
   renderScreen();
 }
 
+function setThumbnail() {
+  var picker = document.getElementById("filePicker");
+  picker.onchange = function() {
+    var selectedImage = this.files[0];
+    var reader = new FileReader();
+    reader.onloadend = function() {
+      file.thumbnail = reader.result;
+      renderScreen();
+    }
+    if ( selectedImage ) {
+      if ( selectedImage.name.toLowerCase().endsWith(".jpg") || selectedImage.name.toLowerCase().endsWith(".png") || selectedImage.name.toLowerCase().endsWith(".tiff") ) reader.readAsDataURL(selectedImage);
+    }
+  }
+  picker.click();
+}
+
 window.onload = function() {
   document.getElementById("title").onchange = function() {
     file.title = this.value;
