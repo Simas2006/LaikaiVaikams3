@@ -1,9 +1,11 @@
 var file = {
   "title": "",
   "edition": "",
-  "objects": [],
-  "thumbnail": null
+  "thumbnail": null,
+  "objects": []
 }
+
+var replaceAll = (s,o,n) => s.split(o).join(n);
 
 function renderScreen() {
   var content = document.getElementById("content");
@@ -51,6 +53,7 @@ function renderScreen() {
       caption["data-object-index"] = i;
       caption.className = "caption";
       caption.value = objects[i].caption;
+      caption.placeholder = "Antraste..."
       caption.onkeydown = caption.onkeyup = function() {
         objects[this["data-object-index"]].caption = this.value;
       }
@@ -156,6 +159,41 @@ function setThumbnail() {
     }
   }
   picker.click();
+}
+
+function exportFile() {
+  if ( ! file.title || ! file.edition || ! file.thumbnail ) {
+    alert("Nera pavadinimo, versijos vardo, arba antrastes.\nIrasyk ir tada pabandykite.");
+    return;
+  }
+  var objects = [];
+  for ( var i = 0; i < file.objects.length; i++ ) {
+    if ( file.objects[i].type == "paragraph" ) {
+      var obj = {
+        type: "paragraph"
+      };
+      var text = file.objects[i].text;
+      text = replaceAll(text,"</div>","");
+      text = replaceAll(text,"<div>","\n");
+      text = replaceAll(text,"<b>","[b]");
+      text = replaceAll(text,"</b>","[/b]");
+      text = replaceAll(text,"&nbsp;"," ");
+      text = replaceAll(text,"&lt;","<");
+      text = replaceAll(text,"&gt;",">");
+      obj.text = text;
+      objects.push(obj);
+    } else {
+      objects.push(file.objects[i]);
+    }
+  }
+  var str = JSON.stringify({
+    title: file.title,
+    edition: file.edition,
+    thumbnail: file.thumbnail,
+    objects: objects
+  });
+  document.getElementById("downloadLink").href = `data:application/octet-stream;charset=utf-8,${str}`;
+  document.getElementById("downloadLink").click();
 }
 
 window.onload = function() {

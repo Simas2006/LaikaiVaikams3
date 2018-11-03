@@ -26,9 +26,9 @@ hr.hline {
   margin-top: 0;
 }
 #content {
-  min-height: 25px;
+  min-height: 50px;
 }
-#filePicker {
+#filePicker,#downloadLink {
   display: none;
 }
 #buttonPanel {
@@ -79,6 +79,10 @@ hr.hline {
   width: 100%;
   font-size: 100%;
   margin-top: 10px;
+}
+.paragraph:empty:not(:focus)::before {
+  content: "Zodziai...";
+  color: gray;
 }
 .buttonPanel,.buttonPanel > button {
   margin: 0;
