@@ -41,6 +41,10 @@ hr.hline {
   font-size: 120%;
   background-color: white;
   border: 1px solid #dddddd;
+  font-family: "Lucida Grande";
+}
+#thumbnailButton {
+  font-family: "Lucida Grande";
 }
 #title,#edition {
   font-weight: normal;
