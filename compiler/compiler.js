@@ -18,7 +18,8 @@ fs.readdir(__dirname,function(err,files) {
     console.log(`Successfully compiled exports into "${name}.json"\n`);
     var manifest_obj = {
       file: name,
-      edition: objects[0].edition
+      edition: objects[0].edition,
+      timestamp: new Date().getTime()
     }
     console.log(`Add following text to manifest.json:\n\n${JSON.stringify(manifest_obj,null,2)}`);
   });

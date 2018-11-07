@@ -1,14 +1,22 @@
 [
   {
     "file": "2017_november",
-    "edition": "2017 m. lapkricio"
+    "edition": "2017 m. lapkricio",
+    "timestamp": 0
   },
   {
     "file": "2018_october",
-    "edition": "2018 m. spalio"
+    "edition": "2018 m. spalio",
+    "timestamp": 0
   },
   {
     "file": "2018_november",
-    "edition": "2018 m. lapkricio"
+    "edition": "2018 m. lapkricio",
+    "timestamp": 0
+  },
+  {
+    "file": "2018_gruodzio",
+    "edition": "2018 m. gruodzio",
+    "timestamp": 1541555717287
   }
 ]
