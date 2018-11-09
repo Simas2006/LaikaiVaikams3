@@ -27,6 +27,7 @@ function renderMenu(edition) {
   }
   menu.appendChild(row);
   document.getElementById("edition").innerText = edition.edition;
+  if ( edition.timestamp + 1000 * 60 * 60 * 24 * 10 > new Date().getTime() ) document.getElementById("new-version").innerText = "NAUJA VERSIJA";
 }
 
 function queryMenu(callback) {

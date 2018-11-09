@@ -48,7 +48,7 @@ app.get("/edition_data",function(request,response) {
         if ( err.code != "ENOENT" ) console.error(err);
         return;
       }
-      data = JSON.parse(data);
+      data = JSON.parse(data.toString());
       var format = {
         edition: data[0].edition,
         articles: data.map(item => {return {
@@ -57,7 +57,17 @@ app.get("/edition_data",function(request,response) {
         }})
       }
       if ( latest ) format.setFile = file;
-      response.send(JSON.stringify(format));
+      fs.readFile(__dirname + "/editions/manifest.json",function(err,data) {
+        if ( err ) {
+          console.error(err);
+          response.sendStatus(400);
+          return;
+        }
+        data = JSON.parse(data.toString());
+        var editionObj = data.filter(item => item.file == file)[0];
+        format.timestamp = editionObj.timestamp;
+        response.send(JSON.stringify(format));
+      });
     });
   }
 });
