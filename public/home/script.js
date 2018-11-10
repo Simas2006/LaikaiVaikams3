@@ -52,5 +52,5 @@ window.onload = function() {
   if ( ! isNaN(parseInt(location.search.slice(1))) ) localStorage.setItem("theme",parseInt(location.search.slice(1)));
   document.body.style.setProperty("--bg-color",["white","#4abdac","#f2eee2"][localStorage.getItem("theme") || 0]);
   document.body.style.setProperty("--fg-color",["black","white","black"][localStorage.getItem("theme") || 0]);
-  document.body.style.setProperty("--link-color",["blue","#4aec1a","#ff3b3f"][localStorage.getItem("theme") || 0]);
+  document.body.style.setProperty("--link-color",["blue","#1b5b09","#ff3b3f"][localStorage.getItem("theme") || 0]);
 }
