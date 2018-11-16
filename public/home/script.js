@@ -1,33 +1,27 @@
 function renderMenu(edition) {
   var articles = edition.articles;
-  var menu = document.getElementById("menu");
-  var row = document.createElement("tr");
-  var odds = false;
-  for ( var i = 0; i < articles.length; i++ ) {
-    var col = document.createElement("td");
-    col.onclick = function() {
-      sessionStorage.setItem("index",this["data-id"]);
-      location.href = "/public/article";
-    }
-    col["data-id"] = i;
-    col.className = "link";
+  for ( var i = 1; i < articles.length; i++ ) {
+    var obj = document.getElementById("article" + (i + 1));
+    var div = document.createElement("div");
+    div.className = "image";
     var img = document.createElement("img");
     img.src = articles[i].thumbnail;
-    col.appendChild(img);
-    col.appendChild(document.createElement("br"));
-    var span = document.createElement("span");
-    span.innerText = articles[i].title;
-    col.appendChild(span);
-    row.appendChild(col);
-    if ( odds ) {
-      menu.appendChild(row);
-      row = document.createElement("tr");
+    div.appendChild(img);
+    obj.appendChild(div);
+    var div = document.createElement("div");
+    div.className = "text";
+    var p = document.createElement("p");
+    p.innerText = articles[i].title;
+    div.appendChild(p);
+    obj.appendChild(div);
+    obj["data-index"] = i;
+    obj.onclick = function() {
+      sessionStorage.setItem("index",this["data-index"]);
+      location.href = "/public/article/index.html";
     }
-    odds = ! odds;
   }
-  menu.appendChild(row);
   document.getElementById("edition").innerText = edition.edition;
-  if ( edition.timestamp + 1000 * 60 * 60 * 24 * 10 > new Date().getTime() ) document.getElementById("new-version").innerText = "NAUJA VERSIJA";
+  if ( edition.timestamp + 1000 * 60 * 60 * 24 * 10 > new Date().getTime() ) document.getElementById("new-version").innerText = "NAUJAS LEIDIMAS!";
 }
 
 function queryMenu(callback) {

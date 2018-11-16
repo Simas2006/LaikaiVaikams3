@@ -1,15 +1,6 @@
 body {
-  --bg-color: white;
-  --fg-color: black;
-  --link-color: blue;
-}/**/
-/*body {
-  --bg-color: #4abdac;
-  --fg-color: white;
-  --link-color: #1a4abc;
-}/**/
-/*body {
   --bg-color: #f2eee2;
   --fg-color: black;
   --link-color: #ff3b3f;
-}/**/
+  --border-color: #1d06aa;
+}
