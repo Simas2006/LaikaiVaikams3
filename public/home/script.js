@@ -6,18 +6,27 @@ function renderMenu(edition) {
     div.className = "image";
     var img = document.createElement("img");
     img.src = articles[i].thumbnail;
+    img["data-index"] = i;
     div.appendChild(img);
     obj.appendChild(div);
     var div = document.createElement("div");
     div.className = "text";
     var p = document.createElement("p");
     p.innerText = articles[i].title;
+    p.className = "title-hidden";
+    p.id = "article-text-" + i;
     div.appendChild(p);
     obj.appendChild(div);
     obj["data-index"] = i;
     obj.onclick = function() {
       sessionStorage.setItem("index",this["data-index"]);
       location.href = "/public/article/index.html";
+    }
+    img.onload = function() {
+      var index = parseInt(this["data-index"]);
+      var textObj = document.getElementById("article-text-" + index);
+      textObj.style.fontSize = (this.width / textObj.offsetWidth) * 100 + "%";
+      textObj.className = "";
     }
   }
   document.getElementById("edition").innerText = edition.edition;
