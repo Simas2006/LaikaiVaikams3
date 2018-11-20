@@ -1,5 +1,6 @@
 function renderMenu(edition) {
   var articles = edition.articles;
+  var loadedValues = [];
   for ( var i = 1; i < articles.length; i++ ) {
     var obj = document.getElementById("article" + (i + 1));
     var div = document.createElement("div");
@@ -25,8 +26,14 @@ function renderMenu(edition) {
     img.onload = function() {
       var index = parseInt(this["data-index"]);
       var textObj = document.getElementById("article-text-" + index);
-      textObj.style.fontSize = (this.width / textObj.offsetWidth) * 100 + "%";
-      textObj.className = "";
+      loadedValues.push(this.width / textObj.offsetWidth);
+      if ( loadedValues.length >= 5 ) {
+        var fontSize = Math.min.apply(null,loadedValues) * 100 + "%";
+        for ( var j = 0; j < 5; j++ ) {
+          document.getElementById("article-text-" + (j + 1)).style.fontSize = fontSize;
+          document.getElementById("article-text-" + (j + 1)).className = "";
+        }
+      }
     }
   }
   document.getElementById("edition").innerText = edition.edition;
