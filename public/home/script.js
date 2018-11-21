@@ -1,7 +1,7 @@
 function renderMenu(edition) {
   var articles = edition.articles;
   var loadedValues = [];
-  for ( var i = 1; i < articles.length; i++ ) {
+  for ( var i = 0; i < articles.length; i++ ) {
     var obj = document.getElementById("article" + (i + 1));
     var div = document.createElement("div");
     div.className = "image";
@@ -27,11 +27,11 @@ function renderMenu(edition) {
       var index = parseInt(this["data-index"]);
       var textObj = document.getElementById("article-text-" + index);
       loadedValues.push(this.width / textObj.offsetWidth);
-      if ( loadedValues.length >= 5 ) {
+      if ( loadedValues.length >= articles.length ) {
         var fontSize = Math.min.apply(null,loadedValues) * 100 + "%";
-        for ( var j = 0; j < 5; j++ ) {
-          document.getElementById("article-text-" + (j + 1)).style.fontSize = fontSize;
-          document.getElementById("article-text-" + (j + 1)).className = "";
+        for ( var j = 0; j < articles.length; j++ ) {
+          document.getElementById("article-text-" + j).style.fontSize = fontSize;
+          document.getElementById("article-text-" + j).className = "";
         }
       }
     }

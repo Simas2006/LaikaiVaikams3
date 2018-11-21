@@ -54,6 +54,9 @@ div.text {
   color: white;
   white-space: nowrap;
 }
+#article1 > div.text {
+  bottom: 0;
+}
 a {
   color: var(--link-color);
 }
