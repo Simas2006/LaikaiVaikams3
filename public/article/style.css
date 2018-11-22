@@ -2,7 +2,7 @@ body {
   background-color: var(--bg-color);
   color: var(--fg-color);
   font-family: "Lucida Grande";
-  font-size: 125%;
+  font-size: 160%;
 }
 img {
   width: 36.5vw;
@@ -27,7 +27,7 @@ hr {
 #content > * {
   margin-top: 0;
 }
-#title,#left-header,#edition {
+#edition {
   font-weight: normal;
 }
 #left-header,#edition {
