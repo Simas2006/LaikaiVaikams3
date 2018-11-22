@@ -5,8 +5,7 @@ fs.readdir(__dirname,function(err,files) {
   files = files.filter(item => item.endsWith(".json"));
   var objects = [];
   for ( var i = 0; i < files.length; i++ ) {
-    var str = fs.readFileSync(__dirname + "/" + files[i]);
-    str = Buffer.from(str.toString(),"base64").toString();
+    var str = fs.readFileSync(__dirname + "/" + files[i]).toString();
     objects.push(JSON.parse(str));
   }
   var data = JSON.stringify(objects);

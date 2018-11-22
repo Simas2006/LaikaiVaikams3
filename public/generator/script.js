@@ -192,7 +192,7 @@ function exportFile() {
     thumbnail: file.thumbnail,
     objects: objects
   });
-  document.getElementById("downloadLink").href = `data:application/octet-stream;charset=utf-8,${btoa(str)}`;
+  document.getElementById("downloadLink").href = `data:application/octet-stream;charset=utf-8,${encodeURIComponent(str)}`;
   document.getElementById("downloadLink").click();
 }
 
