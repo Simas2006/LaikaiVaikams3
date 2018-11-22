@@ -33,15 +33,15 @@ hr {
 #left-header,#edition {
   display: inline;
 }
-#left-header > a {
-  color: var(--fg-color);
-}
 #edition {
   text-align: right;
   float: right;
 }
 #title {
   text-align: center;
+}
+.blacklink {
+  color: var(--fg-color);
 }
 .image {
   text-align: center;
