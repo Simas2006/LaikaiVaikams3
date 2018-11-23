@@ -13,10 +13,10 @@
     <table>
       <tr>
         <td id="left-header">
-          <img src="/public/images/icon1.jpg" width="50" height="50" class="icon" />
+          <img src="/public/images/icon1.jpg" width="70" height="70" class="icon" />
           <span>&nbsp;&nbsp;</span>
           <a href="http://www.lithuanianfoundation.org/" class="nounderline" target="_blank">
-            <img src="/public/images/icon2.jpg" width="50" height="50" class="icon" />
+            <img src="/public/images/icon2.jpg" width="70" height="70" class="icon" />
           </a>
           <br />
         </td>
@@ -37,20 +37,52 @@
   </div>
   <hr />
   <div id="menu-container">
-    <table id="menu">
-      <tr>
-        <td colspan="2" rowspan="2" class="article" id="article1"></td>
-        <td class="article" id="article2"></td>
-      </tr>
-      <tr>
-        <td class="article" id="article3"></td>
-      </tr>
-      <tr>
-        <td class="article" id="article4"></td>
-        <td class="article" id="article5"></td>
-        <td class="article" id="article6"></td>
-      </tr>
-    </table>
+    <div id="big-screen-menu">
+      <table id="menu">
+        <tr>
+          <td colspan="2" rowspan="2" class="article" id="article1"></td>
+          <td class="article" id="article2"></td>
+        </tr>
+        <tr>
+          <td class="article" id="article3"></td>
+        </tr>
+        <tr>
+          <td class="article" id="article4"></td>
+          <td class="article" id="article5"></td>
+          <td class="article" id="article6"></td>
+        </tr>
+      </table>
+    </div>
+    <div id="small-screen-menu">
+      <table id="menu">
+        <tr>
+          <td class="article" id="article1"></td>
+          <td class="shifting">
+            <span id="edition-inmenu"></span>
+            <br />
+            <a href="javascript: openVersionPanel()">Kitos versijos &gt;&gt;</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="article" id="article3"></td>
+          <td class="article" id="article2"></td>
+        </tr>
+        <tr>
+          <td class="article" id="article5"></td>
+          <td class="article" id="article4"></td>
+        </tr>
+        <tr>
+          <td class="shifting">
+            <img src="/public/images/icon1.jpg" width="125" height="125" class="icon" />
+            <span>&nbsp;&nbsp;</span>
+            <a href="http://www.lithuanianfoundation.org/" class="nounderline" target="_blank">
+              <img src="/public/images/icon2.jpg" width="125" height="125" class="icon" />
+            </a>
+          </td>
+          <td class="article" id="article6"></td>
+        </tr>
+      </table>
+    </div>
   </div>
   <br />
   <p class="copyright">

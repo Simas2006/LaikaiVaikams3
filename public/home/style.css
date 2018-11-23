@@ -16,9 +16,17 @@ td.article {
   cursor: pointer;
   overflow: hidden;
 }
+@media only screen and (max-device-width: 812px) and (orientation: portrait) {
+  td.article {
+    height: 15vh;
+  }
+}
+@media only screen and (max-device-width: 812px) and (orientation: landscape) {
+  td.article {
+    height: 60vh;
+  }
+}
 img.icon {
-  width: 70px;
-  height: 70px;
   border: 1px solid black;
 }
 div.image > img {
@@ -63,8 +71,10 @@ a.nounderline {
 p.title-hidden {
   opacity: 0.5;
 }
-#article1 > div.text {
-  bottom: 0;
+@media only screen and (min-device-width: 813px) {
+  #article1 > div.text {
+    bottom: 0;
+  }
 }
 #tab * {
   margin: 0;
@@ -85,6 +95,11 @@ p.title-hidden {
   background-color: white;
   padding: 7px;
   overflow-y: scroll;
+}
+@media only screen and (max-device-width: 812px) {
+  #tab {
+    font-size: 160%;
+  }
 }
 #menu-container {
   display: flex;
@@ -114,6 +129,11 @@ p.title-hidden {
   font-weight: bold;
   margin: 0;
   font-size: 85%;
+}
+.shifting {
+  width: 37.5vw;
+  text-align: center;
+  font-size: 160%;
 }
 .slogan {
   font-size: 75%;

@@ -40,6 +40,8 @@ function renderMenu(edition) {
     }
   }
   document.getElementById("edition").innerText = edition.edition;
+  var editionInMenu = document.getElementById("edition-inmenu");
+  if ( editionInMenu ) document.getElementById("edition-inmenu").innerText = edition.edition;
   if ( edition.timestamp + 1000 * 60 * 60 * 24 * 10 > new Date().getTime() ) document.getElementById("new-version").innerText = "NAUJAS LEIDIMAS!";
 }
 
@@ -81,6 +83,12 @@ window.onresize = function() {
 
 window.onload = function() {
   if ( ! sessionStorage.getItem("file") ) sessionStorage.setItem("file","latest");
+  if ( window.matchMedia("only screen and (min-device-width: 813px)").matches ) {
+    document.getElementById("menu-container").removeChild(document.getElementById("small-screen-menu"));
+  } else {
+    document.getElementById("menu-container").removeChild(document.getElementById("big-screen-menu"));
+
+  }
   queryMenu(renderMenu);
   queryVersions(renderVersions);
 }
