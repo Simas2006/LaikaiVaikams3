@@ -1,5 +1,7 @@
+var articles;
+
 function renderMenu(edition) {
-  var articles = edition.articles;
+  articles = edition.articles;
   var loadedValues = [];
   for ( var i = 0; i < articles.length; i++ ) {
     var obj = document.getElementById("article" + (i + 1));
@@ -7,6 +9,7 @@ function renderMenu(edition) {
     div.className = "image";
     var img = document.createElement("img");
     img.src = articles[i].thumbnail;
+    img.id = "article-image-" + i;
     img["data-index"] = i;
     div.appendChild(img);
     obj.appendChild(div);
@@ -33,6 +36,7 @@ function renderMenu(edition) {
           document.getElementById("article-text-" + j).style.fontSize = fontSize;
           document.getElementById("article-text-" + j).className = "";
         }
+        console.log(loadedValues)
       }
     }
   }
@@ -53,6 +57,19 @@ function queryMenu(callback) {
   }
   req.open("GET",`/edition_data?file=${sessionStorage.getItem("file")}`);
   req.send();
+}
+
+window.onresize = function() {
+  var values = [];
+  for ( var i = 0; i < articles.length; i++ ) {
+    values.push(document.getElementById("article-image-" + i).width / document.getElementById("article-text-" + i).offsetWidth);
+  }
+  var currentSize = parseFloat(document.getElementById("article-text-1").style.fontSize.slice(0,-1)) / 100;
+  values = values.map(item => item * currentSize);
+  var fontSize = Math.min.apply(null,values) * 100 + "%";
+  for ( var i = 0; i < articles.length; i++ ) {
+    document.getElementById("article-text-" + i).style.fontSize = fontSize;
+  }
 }
 
 window.onload = function() {
