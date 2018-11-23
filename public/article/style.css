@@ -2,7 +2,7 @@ body {
   background-color: var(--bg-color);
   color: var(--fg-color);
   font-family: "Lucida Grande";
-  font-size: 145%;
+  font-size: 125%;
 }
 img {
   width: 36.5vw;
@@ -32,12 +32,15 @@ td {
 #content > * {
   margin-top: 0;
 }
+#left-header {
+  text-align: left;
+}
 #edition {
   font-weight: normal;
+  text-align: right;
 }
 #left-header,#edition {
   margin: 0;
-  text-align: center;
 }
 #title {
   text-align: center;
