@@ -59,10 +59,7 @@ function queryMenu(callback) {
 }
 
 function openVersionPanel() {
-  queryVersions(function(list) {
-    renderVersions(list);
-    document.getElementById("tab").style.display = "block";
-  });
+  document.getElementById("tab").style.display = "block";
 }
 
 function closeVersionPanel() {
@@ -85,4 +82,5 @@ window.onresize = function() {
 window.onload = function() {
   if ( ! sessionStorage.getItem("file") ) sessionStorage.setItem("file","latest");
   queryMenu(renderMenu);
+  queryVersions(renderVersions);
 }

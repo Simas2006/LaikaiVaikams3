@@ -54,6 +54,15 @@ div.text {
   color: white;
   white-space: nowrap;
 }
+a {
+  color: var(--link-color);
+}
+a.nounderline {
+  text-decoration: none;
+}
+p.title-hidden {
+  opacity: 0.5;
+}
 #article1 > div.text {
   bottom: 0;
 }
@@ -64,14 +73,18 @@ div.text {
   text-decoration: underline;
   cursor: pointer;
 }
-a {
-  color: var(--link-color);
-}
-a.nounderline {
-  text-decoration: none;
-}
-p.title-hidden {
-  opacity: 0.5;
+#tab {
+  display: none;
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 35vw;
+  height: 100vh;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  background-color: white;
+  padding: 7px;
+  overflow-y: scroll;
 }
 #menu-container {
   display: flex;
@@ -101,18 +114,6 @@ p.title-hidden {
   font-weight: bold;
   margin: 0;
   font-size: 85%;
-}
-#tab {
-  display: none;
-  position: fixed;
-  right: 0;
-  top: 0;
-  width: 35vw;
-  height: 100vh;
-  border: 1px solid black;
-  background-color: white;
-  padding: 7px;
-  overflow-y: scroll;
 }
 .slogan {
   font-size: 75%;

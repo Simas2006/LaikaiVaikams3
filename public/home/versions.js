@@ -1,6 +1,16 @@
 function renderVersions(list) {
   var obj = document.getElementById("tab");
   var activeUL,activeYear;
+  list = list.reverse();
+  var li = document.createElement("li");
+  var a = document.createElement("a");
+  a.innerText = "I naujausia versija";
+  a.onclick = function() {
+    sessionStorage.setItem("file","latest");
+    location.href = "/public/home";
+  }
+  li.appendChild(a);
+  obj.appendChild(li);
   for ( var i = 0; i < list.length + 1; i++ ) {
     if ( ! list[i] || activeYear != list[i].file.split("_")[0] ) {
       if ( activeUL ) {
@@ -26,15 +36,6 @@ function renderVersions(list) {
     li.appendChild(a);
     activeUL.appendChild(li);
   }
-  var li = document.createElement("li");
-  var a = document.createElement("a");
-  a.innerText = "I naujausia versija";
-  a.onclick = function() {
-    sessionStorage.setItem("file",list[list.length - 1].file);
-    location.href = "/public/home";
-  }
-  li.appendChild(a);
-  obj.appendChild(li);
 }
 
 function queryVersions(callback) {
