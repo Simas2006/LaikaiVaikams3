@@ -36,7 +36,6 @@ function renderMenu(edition) {
           document.getElementById("article-text-" + j).style.fontSize = fontSize;
           document.getElementById("article-text-" + j).className = "";
         }
-        console.log(loadedValues)
       }
     }
   }
@@ -57,6 +56,14 @@ function queryMenu(callback) {
   }
   req.open("GET",`/edition_data?file=${sessionStorage.getItem("file")}`);
   req.send();
+}
+
+function openVersionPanel() {
+  document.getElementById("tab").style.display = "block";
+}
+
+function closeVersionPanel() {
+  document.getElementById("tab").style.display = "none";
 }
 
 window.onresize = function() {

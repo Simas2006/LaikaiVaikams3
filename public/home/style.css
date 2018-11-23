@@ -57,6 +57,9 @@ div.text {
 #article1 > div.text {
   bottom: 0;
 }
+#tab > p {
+  margin: 0;
+}
 a {
   color: var(--link-color);
 }
@@ -94,6 +97,18 @@ p.title-hidden {
   font-weight: bold;
   margin: 0;
   font-size: 85%;
+}
+#tab {
+  display: none;
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 35vw;
+  height: 100vh;
+  border: 1px solid black;
+  background-color: white;
+  padding: 7px;
+  overflow-y: scroll;
 }
 .slogan {
   font-size: 75%;
