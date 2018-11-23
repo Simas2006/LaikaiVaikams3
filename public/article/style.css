@@ -4,6 +4,11 @@ body {
   font-family: "Lucida Grande";
   font-size: 125%;
 }
+@media only screen and (max-device-width: 812px) {
+  body {
+    font-size: 245%;
+  }
+}
 img {
   width: 36.5vw;
   height: auto;
