@@ -57,8 +57,12 @@ div.text {
 #article1 > div.text {
   bottom: 0;
 }
-#tab > p {
+#tab * {
   margin: 0;
+}
+#tab a {
+  text-decoration: underline;
+  cursor: pointer;
 }
 a {
   color: var(--link-color);

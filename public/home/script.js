@@ -59,7 +59,10 @@ function queryMenu(callback) {
 }
 
 function openVersionPanel() {
-  document.getElementById("tab").style.display = "block";
+  queryVersions(function(list) {
+    renderVersions(list);
+    document.getElementById("tab").style.display = "block";
+  });
 }
 
 function closeVersionPanel() {

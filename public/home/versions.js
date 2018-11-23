@@ -1,5 +1,5 @@
-function renderList(list) {
-  var obj = document.getElementById("versions");
+function renderVersions(list) {
+  var obj = document.getElementById("tab");
   var activeUL,activeYear;
   for ( var i = 0; i < list.length + 1; i++ ) {
     if ( ! list[i] || activeYear != list[i].file.split("_")[0] ) {
@@ -37,7 +37,7 @@ function renderList(list) {
   obj.appendChild(li);
 }
 
-function queryList(callback) {
+function queryVersions(callback) {
   var req = new XMLHttpRequest();
   req.onload = function() {
     if ( this.responseText == "Bad Request" ) {
@@ -48,8 +48,4 @@ function queryList(callback) {
   }
   req.open("GET","/list_data");
   req.send();
-}
-
-window.onload = function() {
-  queryList(renderList);
 }
