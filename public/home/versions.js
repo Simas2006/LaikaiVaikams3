@@ -30,8 +30,13 @@ function renderVersions(list) {
     a.innerText = list[i].edition;
     a["data-id"] = i;
     a.onclick = function() {
-      sessionStorage.setItem("file",list[this["data-id"]].file);
-      location.href = "/public/home";
+      var index = this["data-id"];
+      if ( ! list[index].link ) {
+        sessionStorage.setItem("file",list[index].file);
+        location.href = "/public/home";
+      } else {
+        location.href = list[index].link;
+      }
     }
     li.appendChild(a);
     activeUL.appendChild(li);
