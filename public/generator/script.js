@@ -132,6 +132,11 @@ function addImage() {
     }
     if ( selectedImage ) {
       if ( selectedImage.name.toLowerCase().endsWith(".jpg") || selectedImage.name.toLowerCase().endsWith(".png") || selectedImage.name.toLowerCase().endsWith(".tiff") ) reader.readAsDataURL(selectedImage);
+      document.body.removeChild(picker);
+      var newPicker = document.createElement("input");
+      newPicker.type = "file";
+      newPicker.id = "filePicker";
+      document.body.appendChild(newPicker);
     }
   }
   picker.click();
@@ -156,6 +161,11 @@ function setThumbnail() {
     }
     if ( selectedImage ) {
       if ( selectedImage.name.toLowerCase().endsWith(".jpg") || selectedImage.name.toLowerCase().endsWith(".png") || selectedImage.name.toLowerCase().endsWith(".tiff") ) reader.readAsDataURL(selectedImage);
+      document.body.removeChild(picker);
+      var newPicker = document.createElement("input");
+      newPicker.type = "file";
+      newPicker.id = "filePicker";
+      document.body.appendChild(newPicker);
     }
   }
   picker.click();
