@@ -24,7 +24,7 @@ function renderMenu(edition) {
     obj["data-index"] = i;
     obj.onclick = function() {
       sessionStorage.setItem("index",this["data-index"]);
-      location.href = "/public/article/index.html";
+      location.href = "/article/index.html";
     }
     img.onload = function() {
       var index = parseInt(this["data-index"]);
@@ -56,7 +56,7 @@ function queryMenu(callback) {
     if ( data.setFile ) sessionStorage.setItem("file",data.setFile);
     callback(data);
   }
-  req.open("GET",`/edition_data?file=${sessionStorage.getItem("file")}`);
+  req.open("GET",`/server_access/edition_data.php?file=${sessionStorage.getItem("file")}`);
   req.send();
 }
 

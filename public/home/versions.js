@@ -7,7 +7,7 @@ function renderVersions(list) {
   a.innerText = "I naujausia versija";
   a.onclick = function() {
     sessionStorage.setItem("file","latest");
-    location.href = "/public/home";
+    location.href = "/home/index.html";
   }
   li.appendChild(a);
   obj.appendChild(li);
@@ -33,7 +33,7 @@ function renderVersions(list) {
       var index = this["data-id"];
       if ( ! list[index].link ) {
         sessionStorage.setItem("file",list[index].file);
-        location.href = "/public/home";
+        location.href = "/home/index.html";
       } else {
         location.href = list[index].link;
       }
@@ -52,6 +52,6 @@ function queryVersions(callback) {
     }
     callback(JSON.parse(this.responseText));
   }
-  req.open("GET","/list_data");
+  req.open("GET","/server_access/list_data.php");
   req.send();
 }
