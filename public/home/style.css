@@ -132,6 +132,7 @@ p.title-hidden {
 }
 .shifting {
   width: 37.5vw;
+  height: 15vh;
   text-align: center;
   font-size: 160%;
 }
