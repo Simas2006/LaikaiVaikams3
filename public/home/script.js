@@ -87,7 +87,6 @@ window.onload = function() {
     document.getElementById("menu-container").removeChild(document.getElementById("small-screen-menu"));
   } else {
     document.getElementById("menu-container").removeChild(document.getElementById("big-screen-menu"));
-
   }
   queryMenu(renderMenu);
   queryVersions(renderVersions);
