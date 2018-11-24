@@ -1,4 +1,6 @@
 body,input {
+  background-color: var(--bg-color);
+  color: var(--fg-color);
   font-family: "Lucida Grande";
   font-size: 125%;
 }
@@ -39,7 +41,7 @@ hr.hline {
   padding-left: 15px;
   padding-right: 15px;
   font-size: 120%;
-  background-color: white;
+  background-color: var(--bg-color);
   border: 1px solid #dddddd;
   font-family: "Lucida Grande";
 }
@@ -60,7 +62,7 @@ hr.hline {
 }
 #left-header > button {
   font-size: 105%;
-  background-color: white;
+  background-color: var(--bg-color);
 }
 #edition {
   text-align: right;
@@ -92,5 +94,6 @@ hr.hline {
   margin: 0;
 }
 .buttonPanel > button {
+  background-color: var(--bg-color);
   border: 0;
 }
