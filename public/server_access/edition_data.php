@@ -23,8 +23,14 @@ foreach ( $jsonObj as $article ) {
   ];
   $articleArr[] = $obj;
 }
+$obj = @fopen("../../editions/manifest.json","r") or die("Bad Request");
+$manifestObj = json_decode(fread($obj,filesize("../../editions/manifest.json")));
+foreach ( $manifestObj as $entry ) {
+  if ( $entry -> file == $file ) $manifestEntry = $entry;
+}
 $outputObj = (object) [
   "edition" => $jsonObj[0] -> edition,
+  "timestamp" => $manifestEntry -> timestamp,
   "articles" => $articleArr
 ];
 if ( $setFile ) $outputObj -> setFile = $file;
