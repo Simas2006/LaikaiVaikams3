@@ -4,13 +4,13 @@
   <meta charset="utf-8">
   <title>LaikaiVaikams Article Generator</title>
   <link rel="stylesheet" type="text/css" href="style.css" />
-  <link rel="stylesheet" type="text/css" href="../scheme.css" />
+  <link rel="stylesheet" type="text/css" href="../../scheme.css" />
   <script src="script.js"></script>
 </head>
 <body>
   <div id="container">
     <div id="left-header">
-      <button onclick="setThumbnail()" id="thumbnailButton">Nustatyt Antraste</button>
+      <button onclick="setThumbnail()" id="thumbnailButton">Nustatyt Paveiksla</button>
     </div>
     <input type="text" id="edition" placeholder="Versija"></input>
     <input type="text" id="title" placeholder="Pavadinimas"></input>
@@ -22,10 +22,9 @@
       <button onclick="addImage()">+📷</button>
       <button onclick="addHorizontal()">+—</button>
       <br />
-      <button onclick="exportFile()">Padaryk Faila</button>
+      <button onclick="saveFile()">Išsaugot Pakeitimus</button>
     </div>
   </div>
   <input type="file" id="filePicker" />
-  <a id="downloadLink" download="lvexport.json">d</a>
 </body>
 </html>

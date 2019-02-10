@@ -1,0 +1,14 @@
+Infrastructure changes:
+Re-open files + make edits
+Self-upload mechanism
+Leave comments on articles
+
+Cosmetic changes:
+Two columns in article
+Italics + underlines
+Pick random article for largest slot
+Fix archive color
+Colored text
+Add links into articles (external + to glossary tab)
+Glossary in block
+Change border to mint
