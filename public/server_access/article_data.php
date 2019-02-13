@@ -8,5 +8,6 @@ $path = "../../editions/" . $file . ".json";
 $obj = @fopen($path,"r") or die("Bad Request");
 $jsonObj = json_decode(fread($obj,filesize($path)));
 $articleObj = $jsonObj[$index];
+fclose($obj);
 echo json_encode($articleObj);
 ?>
