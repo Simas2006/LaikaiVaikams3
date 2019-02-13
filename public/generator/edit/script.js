@@ -171,11 +171,7 @@ function setThumbnail() {
   picker.click();
 }
 
-function exportFile() {
-  if ( ! file.title || ! file.edition || ! file.thumbnail ) {
-    alert("Nera pavadinimo, versijos vardo, arba antrastes.\nIrasyk ir tada pabandykite.");
-    return;
-  }
+function saveFile() {
   var objects = [];
   for ( var i = 0; i < file.objects.length; i++ ) {
     if ( file.objects[i].type == "paragraph" ) {
@@ -202,9 +198,15 @@ function exportFile() {
     thumbnail: file.thumbnail,
     objects: objects
   });
-  console.log(str);
-  document.getElementById("downloadLink").href = `data:application/octet-stream;charset=utf-8,${encodeURIComponent(str)}`;
-  document.getElementById("downloadLink").click();
+  var req = new XMLHttpRequest();
+  req.onload = function() {
+    if ( this.responseText == "Bad Request" ) {
+      alert("Failed to save the article. Please try again.");
+      return;
+    }
+  }
+  req.open("POST",`/generator/server_access/save_dev_article.php?index=${sessionStorage.getItem("index")}`);
+  req.send(str);
 }
 
 window.onload = function() {
