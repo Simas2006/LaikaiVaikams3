@@ -150,13 +150,18 @@ function addHorizontal() {
 }
 
 function setThumbnail() {
+  if ( file.thumbnail ) {
+    file.thumbnail = null;
+    document.getElementById("thumbnailButton").innerText = "Nustatyt Paveiksla";
+    return;
+  }
   var picker = document.getElementById("filePicker");
   picker.onchange = function() {
     var selectedImage = this.files[0];
     var reader = new FileReader();
     reader.onloadend = function() {
       file.thumbnail = reader.result;
-      document.getElementById("thumbnailButton").innerText = "Nustatyt Antraste ✓";
+      document.getElementById("thumbnailButton").innerText = "Nustatyt Paveiksla ✓";
       renderScreen();
     }
     if ( selectedImage ) {
@@ -184,8 +189,8 @@ function saveFile() {
       text = replaceAll(text,"<b>","[b]");
       text = replaceAll(text,"</b>","[/b]");
       text = replaceAll(text,"&nbsp;"," ");
-      text = replaceAll(text,"&lt;","<");
-      text = replaceAll(text,"&gt;",">");
+      text = replaceAll(text,"<","&lt;");
+      text = replaceAll(text,">","&gt;");
       obj.text = text;
       objects.push(obj);
     } else {
@@ -210,6 +215,32 @@ function saveFile() {
 }
 
 window.onload = function() {
+  var req = new XMLHttpRequest();
+  req.onload = function() {
+    if ( this.responseText == "Bad Request" ) {
+      alert("Failed to load the article. Please try again.");
+      return;
+    } else {
+      file = JSON.parse(this.responseText);
+      document.getElementById("title").value = file.title;
+      document.getElementById("edition").value = file.edition;
+      if ( file.thumbnail ) document.getElementById("thumbnailButton").innerText = "Nustatyt Paveiksla ✓";
+      for ( var i = 0; i < file.objects.length; i++ ) {
+        if ( file.objects[i].type == "paragraph" ) {
+          var text = file.objects[i].text;
+          text = replaceAll(text,"\n","<div>");
+          text = replaceAll(text,"[b]","<b>");
+          text = replaceAll(text,"[/b]","</b>");
+          text = replaceAll(text," ","&nbsp;");
+          console.log(text);
+          file.objects[i].text = text;
+        }
+      }
+      renderScreen();
+    }
+  }
+  req.open("GET",`/generator/server_access/load_dev_article.php?index=${sessionStorage.getItem("index")}`);
+  req.send();
   document.getElementById("title").onchange = function() {
     file.title = this.value;
   }
