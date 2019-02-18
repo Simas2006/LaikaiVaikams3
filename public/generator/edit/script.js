@@ -200,6 +200,7 @@ function saveFile() {
   var str = JSON.stringify({
     title: file.title,
     edition: file.edition,
+    state: file.state,
     thumbnail: file.thumbnail,
     objects: objects
   });

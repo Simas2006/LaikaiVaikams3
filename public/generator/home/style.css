@@ -4,3 +4,29 @@ body {
   font-family: "Lucida Grande";
   font-size: 125%;
 }
+a {
+  cursor: pointer;
+  text-decoration: underline;
+}
+#menu td {
+  width: 33vw;
+}
+#menu tr {
+  border-bottom: 1px solid black;
+}
+#menu {
+  border-collapse: collapse;
+  border-top: 1px solid black;
+}
+.thumbnail,.noimage {
+  border: 2px solid black;
+  width: 150px;
+  height: 100px;
+  margin-top: 3px;
+}
+.noimage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 3px;
+}
