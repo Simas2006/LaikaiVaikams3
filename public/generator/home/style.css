@@ -1,0 +1,6 @@
+body {
+  background-color: var(--bg-color);
+  color: var(--fg-color);
+  font-family: "Lucida Grande";
+  font-size: 125%;
+}
