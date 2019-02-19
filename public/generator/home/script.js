@@ -7,9 +7,9 @@ function renderMenu() {
     var col1 = document.createElement("td");
     var a = document.createElement("a");
     a.innerText = articles[i].title || "Nepavadintas";
-    a.id = "l:" + i;
+    a["data-index"] = i;
     a.onclick = function() {
-      sessionStorage.setItem("index",this.id.split(":")[1]);
+      sessionStorage.setItem("index",this["data-index"]);
       location.href = "/generator/edit/index.html";
     }
     col1.appendChild(a);
