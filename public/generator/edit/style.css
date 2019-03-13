@@ -97,3 +97,12 @@ hr.hline {
   background-color: var(--bg-color);
   border: 0;
 }
+.label3 {
+  font-weight: bold;
+}
+.label4 {
+  font-style: italic;
+}
+.label5 {
+  text-decoration: underline;
+}

@@ -7,7 +7,35 @@ var file = {
 
 var replaceAll = (s,o,n) => s.split(o).join(n);
 
+function runFormattingFunction(key) {
+  var formattingFunctions = {
+    "bold": function() {
+      document.execCommand("bold");
+    },
+    "italic": function() {
+      document.execCommand("italic");
+    },
+    "underline": function() {
+      document.execCommand("underline");
+    }
+  }
+  setTimeout(function() {
+    formattingFunctions[key]();
+  },10);
+}
+
 function renderScreen() {
+  function buttonHandler(key) {
+    return function() {
+      var obj = file.objects[this["data-object-index"]];
+      if ( obj.focused ) {
+        runFormattingFunction(key);
+        obj.active[key] = ! obj.active[key];
+      } else {
+        obj.toggle[key] = ! obj.toggle[key];
+      }
+    }
+  }
   var content = document.getElementById("content");
   var objects = file.objects;
   while ( content.firstChild ) {
@@ -28,12 +56,13 @@ function renderScreen() {
       textarea.onfocus = function() {
         var obj = objects[this["data-object-index"]];
         obj.focused = true;
-        if ( obj.toggleBold ) {
-          obj.boldSet = ! obj.boldSet;
-          obj.toggleBold = false;
-          setTimeout(function() {
-            document.execCommand("bold");
-          },10);
+        var keys = Object.keys(obj.toggle);
+        for ( var i = 0; i < keys.length; i++ ) {
+          if ( obj.toggle[keys[i]] ) {
+            obj.active[keys[i]] = ! obj.active[keys[i]];
+            obj.toggle[keys[i]] = false;
+            runFormattingFunction(keys[i]);
+          }
         }
       }
       textarea.onblur = function() {
@@ -41,7 +70,7 @@ function renderScreen() {
       }
       div.appendChild(textarea);
       content.appendChild(div);
-      labels.push("B");
+      labels = labels.concat(["B","I","U"]);
     } else if ( objects[i].type == "image" ) {
       var p = document.createElement("p");
       p.className = "image";
@@ -84,21 +113,15 @@ function renderScreen() {
         objects.splice(this["data-object-index"],1);
         renderScreen();
       },
-      function() {
-        var obj = objects[this["data-object-index"]];
-        if ( obj.focused ) {
-          document.execCommand("bold");
-          obj.boldSet = ! obj.boldSet;
-        } else {
-          obj.toggleBold = ! obj.toggleBold;
-        }
-        this.style.fontWeight = (this.style.fontWeight == "bold" ? "normal" : "bold");
-      }
+      buttonHandler("bold"),
+      buttonHandler("italic"),
+      buttonHandler("underline")
     ];
     for ( var j = 0; j < labels.length; j++ ) {
       var button = document.createElement("button");
       button.innerText = labels[j];
       button["data-object-index"] = i;
+      button.className = "label" + j;
       button.onclick = functions[j];
       panel.appendChild(button);
     }
@@ -110,9 +133,17 @@ function addParagraph() {
   file.objects.push({
     "type": "paragraph",
     "text": "",
-    "boldSet": false,
     "focused": false,
-    "toggleBold": false
+    "active": {
+      "bold": false,
+      "italic": false,
+      "underline": false
+    },
+    "toggle": {
+      "bold": false,
+      "italic": false,
+      "underline": false
+    }
   });
   renderScreen();
 }
@@ -186,11 +217,7 @@ function saveFile() {
       var text = file.objects[i].text;
       text = replaceAll(text,"</div>","");
       text = replaceAll(text,"<div>","\n");
-      text = replaceAll(text,"<b>","[b]");
-      text = replaceAll(text,"</b>","[/b]");
       text = replaceAll(text,"&nbsp;"," ");
-      text = replaceAll(text,"<","&lt;");
-      text = replaceAll(text,">","&gt;");
       obj.text = text;
       objects.push(obj);
     } else {
@@ -230,10 +257,6 @@ window.onload = function() {
         if ( file.objects[i].type == "paragraph" ) {
           var text = file.objects[i].text;
           text = replaceAll(text,"\n","<div>");
-          text = replaceAll(text,"[b]","<b>");
-          text = replaceAll(text,"[/b]","</b>");
-          text = replaceAll(text," ","&nbsp;");
-          console.log(text);
           file.objects[i].text = text;
         }
       }
