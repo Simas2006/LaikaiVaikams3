@@ -20,8 +20,8 @@ a {
 }
 .thumbnail,.noimage {
   border: 2px solid black;
-  width: 150px;
-  height: 100px;
+  width: 200px;
+  height: 150px;
   margin-top: 3px;
 }
 .noimage {
