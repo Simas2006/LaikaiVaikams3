@@ -56,6 +56,13 @@ function renderScreen() {
   function buttonHandler(key) {
     return function() {
       var obj = file.objects[this["data-object-index"]];
+      if ( key.startsWith("color") ) {
+        var keys = Object.keys(obj.active);
+        for ( var i = 0; i < keys.length; i++ ) {
+          obj.active[keys[i]] = false;
+          obj.toggle[keys[i]] = false;
+        }
+      }
       if ( obj.focused ) {
         runFormattingFunction(key);
         obj.active[key] = ! obj.active[key];
@@ -172,12 +179,26 @@ function addParagraph() {
     "active": {
       "bold": false,
       "italic": false,
-      "underline": false
+      "underline": false,
+      "colorblack": false,
+      "colorred": false,
+      "colororange": false,
+      "coloryellow": false,
+      "colorlblue": false,
+      "colorblue": false,
+      "colorpurple": false
     },
     "toggle": {
       "bold": false,
       "italic": false,
-      "underline": false
+      "underline": false,
+      "colorblack": false,
+      "colorred": false,
+      "colororange": false,
+      "coloryellow": false,
+      "colorlblue": false,
+      "colorblue": false,
+      "colorpurple": false
     }
   });
   renderScreen();
