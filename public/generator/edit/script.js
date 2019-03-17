@@ -17,7 +17,35 @@ function runFormattingFunction(key) {
     },
     "underline": function() {
       document.execCommand("underline");
-    }
+    },
+    "colorblack": function() {
+      document.execCommand("styleWithCSS",false,true);
+      document.execCommand("foreColor",false,"black");
+    },
+    "colorred": function() {
+      document.execCommand("styleWithCSS",false,true);
+      document.execCommand("foreColor",false,"red");
+    },
+    "colororange": function() {
+      document.execCommand("styleWithCSS",false,true);
+      document.execCommand("foreColor",false,"orange");
+    },
+    "coloryellow": function() {
+      document.execCommand("styleWithCSS",false,true);
+      document.execCommand("foreColor",false,"yellow");
+    },
+    "colorlblue": function() {
+      document.execCommand("styleWithCSS",false,true);
+      document.execCommand("foreColor",false,"#00ddff");
+    },
+    "colorblue": function() {
+      document.execCommand("styleWithCSS",false,true);
+      document.execCommand("foreColor",false,"blue");
+    },
+    "colorpurple": function() {
+      document.execCommand("styleWithCSS",false,true);
+      document.execCommand("foreColor",false,"purple");
+    },
   }
   setTimeout(function() {
     formattingFunctions[key]();
@@ -70,7 +98,7 @@ function renderScreen() {
       }
       div.appendChild(textarea);
       content.appendChild(div);
-      labels = labels.concat(["B","I","U"]);
+      labels = labels.concat(["B","I","U","●","●","●","●","●","●","●"]);
     } else if ( objects[i].type == "image" ) {
       var p = document.createElement("p");
       p.className = "image";
@@ -115,7 +143,14 @@ function renderScreen() {
       },
       buttonHandler("bold"),
       buttonHandler("italic"),
-      buttonHandler("underline")
+      buttonHandler("underline"),
+      buttonHandler("colorblack"),
+      buttonHandler("colorred"),
+      buttonHandler("colororange"),
+      buttonHandler("coloryellow"),
+      buttonHandler("colorlblue"),
+      buttonHandler("colorblue"),
+      buttonHandler("colorpurple")
     ];
     for ( var j = 0; j < labels.length; j++ ) {
       var button = document.createElement("button");
