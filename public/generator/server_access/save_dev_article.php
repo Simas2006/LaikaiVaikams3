@@ -1,6 +1,7 @@
 <?php
 $data = file_get_contents("php://input");
 if ( is_null($data) || is_null($_GET["index"]) ) die("Bad Request");
+$data = str_ireplace("script","",$data);
 $path = "../../../editions/dev_version.json";
 $obj = @fopen($path,"r") or die("Bad Request");
 $jsonObj = json_decode(fread($obj,filesize($path)));
