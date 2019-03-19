@@ -53,12 +53,13 @@ function runFormattingFunction(key) {
 }
 
 function renderScreen() {
-  function buttonHandler(key) {
+  function buttonHandler(key,index) {
     return function() {
       var obj = file.objects[this["data-object-index"]];
       if ( key.startsWith("color") ) {
         var keys = Object.keys(obj.active);
         for ( var i = 0; i < keys.length; i++ ) {
+          if ( ! keys[i].startsWith("color") ) continue;
           obj.active[keys[i]] = false;
           obj.toggle[keys[i]] = false;
         }
@@ -68,6 +69,15 @@ function renderScreen() {
         obj.active[key] = ! obj.active[key];
       } else {
         obj.toggle[key] = ! obj.toggle[key];
+      }
+      var keys = Object.keys(obj.active);
+      for ( var i = 3; i < keys.length + 3; i++ ) {
+        if ( obj.active[keys[i - 3]] || obj.toggle[keys[i - 3]] ) {
+          console.log(document.getElementById(`label${i}:${index}`));
+          document.getElementById(`label${i}:${index}`).classList.add("active");
+        } else {
+          document.getElementById(`label${i}:${index}`).classList.remove("active");
+        }
       }
     }
   }
@@ -148,22 +158,23 @@ function renderScreen() {
         objects.splice(this["data-object-index"],1);
         renderScreen();
       },
-      buttonHandler("bold"),
-      buttonHandler("italic"),
-      buttonHandler("underline"),
-      buttonHandler("colorblack"),
-      buttonHandler("colorred"),
-      buttonHandler("colororange"),
-      buttonHandler("coloryellow"),
-      buttonHandler("colorlblue"),
-      buttonHandler("colorblue"),
-      buttonHandler("colorpurple")
+      buttonHandler("bold",i),
+      buttonHandler("italic",i),
+      buttonHandler("underline",i),
+      buttonHandler("colorblack",i),
+      buttonHandler("colorred",i),
+      buttonHandler("colororange",i),
+      buttonHandler("coloryellow",i),
+      buttonHandler("colorlblue",i),
+      buttonHandler("colorblue",i),
+      buttonHandler("colorpurple",i)
     ];
     for ( var j = 0; j < labels.length; j++ ) {
       var button = document.createElement("button");
       button.innerText = labels[j];
       button["data-object-index"] = i;
-      button.className = "label" + j;
+      button.className = `label${j}`;
+      button.id = `label${j}:${i}`
       button.onclick = functions[j];
       panel.appendChild(button);
     }
