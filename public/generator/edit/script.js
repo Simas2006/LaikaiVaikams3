@@ -73,7 +73,6 @@ function renderScreen() {
       var keys = Object.keys(obj.active);
       for ( var i = 3; i < keys.length + 3; i++ ) {
         if ( obj.active[keys[i - 3]] || obj.toggle[keys[i - 3]] ) {
-          console.log(document.getElementById(`label${i}:${index}`));
           document.getElementById(`label${i}:${index}`).classList.add("active");
         } else {
           document.getElementById(`label${i}:${index}`).classList.remove("active");
@@ -179,6 +178,16 @@ function renderScreen() {
       panel.appendChild(button);
     }
     content.appendChild(panel);
+    setTimeout(function(index) {
+      var keys = Object.keys(objects[index].active);
+      for ( var j = 3; j < keys.length + 3; j++ ) {
+        if ( objects[index].active[keys[j - 3]] || objects[index].toggle[keys[j - 3]] ) {
+          document.getElementById(`label${j}:${index}`).classList.add("active");
+        } else {
+          document.getElementById(`label${j}:${index}`).classList.remove("active");
+        }
+      }
+    }.bind(null,i),10);
   }
 }
 
