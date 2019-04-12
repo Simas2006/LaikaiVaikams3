@@ -7,19 +7,7 @@ function renderFile(file) {
     if ( objects[i].type == "paragraph" ) {
       var text = objects[i].text;
       var p = document.createElement("p");
-      while ( text.indexOf("[b]") > -1 ) {
-        var span = document.createElement("span");
-        span.innerText = text.slice(0,text.indexOf("[b]"));
-        p.appendChild(span);
-        text = text.slice(text.indexOf("[b]") + 3);
-        var b = document.createElement("b");
-        b.innerText = text.slice(0,text.indexOf("[/b]"));
-        p.appendChild(b);
-        text = text.slice(text.indexOf("[/b]") + 4);
-      }
-      var span = document.createElement("span");
-      span.innerText = text;
-      p.appendChild(span);
+      p.innerHTML = text;
       content.appendChild(p);
     } else if ( objects[i].type == "image" ) {
       var p = document.createElement("p");
