@@ -4,6 +4,7 @@ var file = {
   "thumbnail": null,
   "objects": []
 }
+var editorMode = false;
 
 var replaceAll = (s,o,n) => s.split(o).join(n);
 
@@ -72,7 +73,7 @@ function renderScreen() {
       }
       var keys = Object.keys(obj.active);
       for ( var i = 3; i < keys.length + 3; i++ ) {
-        if ( obj.active[keys[i - 3]] || obj.toggle[keys[i - 3]] ) {
+        if ( obj.active[keys[i - 3]] ^ obj.toggle[keys[i - 3]] ) {
           document.getElementById(`label${i}:${index}`).classList.add("active");
         } else {
           document.getElementById(`label${i}:${index}`).classList.remove("active");
@@ -168,6 +169,7 @@ function renderScreen() {
       buttonHandler("colorblue",i),
       buttonHandler("colorpurple",i)
     ];
+    if ( editorMode ) labels = [];
     for ( var j = 0; j < labels.length; j++ ) {
       var button = document.createElement("button");
       button.innerText = labels[j];
@@ -181,7 +183,7 @@ function renderScreen() {
     setTimeout(function(index) {
       var keys = Object.keys(objects[index].active);
       for ( var j = 3; j < keys.length + 3; j++ ) {
-        if ( objects[index].active[keys[j - 3]] || objects[index].toggle[keys[j - 3]] ) {
+        if ( objects[index].active[keys[j - 3]] ^ objects[index].toggle[keys[j - 3]] ) {
           document.getElementById(`label${j}:${index}`).classList.add("active");
         } else {
           document.getElementById(`label${j}:${index}`).classList.remove("active");
@@ -287,10 +289,8 @@ function saveFile() {
   var objects = [];
   for ( var i = 0; i < file.objects.length; i++ ) {
     if ( file.objects[i].type == "paragraph" ) {
-      var obj = {
-        type: "paragraph"
-      };
-      var text = file.objects[i].text;
+      var obj = file.objects[i];
+      var text = obj.text;
       text = replaceAll(text,"</div>","");
       text = replaceAll(text,"<div>","\n");
       text = replaceAll(text,"&nbsp;"," ");
