@@ -1,14 +1,14 @@
-Infrastructure changes:
+DONE:
 Re-open files + make edits
-Self-upload mechanism
-Leave comments on articles
-
-Cosmetic changes:
-Two columns in article
 Italics + underlines
-Pick random article for largest slot
-Fix archive color
 Colored text
-Add links into articles (external + to glossary tab)
-Glossary in block
-Change border to mint
+Change file state button
+
+TO DO:
+Leave comments on articles (hard)
+Self-upload mechanism (hard)
+Add links into articles (external + to glossary tab) (medium)
+Glossary in block (medium)
+Change border to mint (easy)
+Fix archive color (easy)
+Pick random article for largest slot (easy)
