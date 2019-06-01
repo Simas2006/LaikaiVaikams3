@@ -15,12 +15,39 @@ function renderMenu() {
     col1.appendChild(a);
     row.appendChild(col1);
     var col2 = document.createElement("td");
-    col2.innerText = [
+    var span = document.createElement("span");
+    span.innerText = [
       "Rasymas vyksta",
       "Parasytas, reike perziuret",
       "Perziuretas, reike patvirtinimo",
       "Paruostas eit i produkcija"
     ][articles[i].state];
+    span.className = "state";
+    col2.appendChild(span);
+    if ( articles[i].state < 3 ) {
+      var button = document.createElement("button");
+      button.innerText = [
+        "Parasytas",
+        "Perziuretas",
+        "Patvirtintas"
+      ][articles[i].state];
+      button["data-index"] = i;
+      button.onclick = function() {
+        articles[parseInt(this["data-index"])].state++;
+        var req = new XMLHttpRequest();
+        req.onload = function() {
+          if ( this.responseText == "Bad Request" ) {
+            alert("Failed to change the article state. Please try again.");
+            return;
+          } else {
+            location.reload();
+          }
+        }
+        req.open("GET",`/generator/server_access/get_dev_articles.php?index=${this["data-index"]}`);
+        req.send();
+      }
+      col2.appendChild(button);
+    }
     row.appendChild(col2);
     var col3 = document.createElement("td");
     if ( articles[i].thumbnail ) {

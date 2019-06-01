@@ -4,6 +4,15 @@ body {
   font-family: "Lucida Grande";
   font-size: 125%;
 }
+button {
+  background-color: var(--bg-color);
+  color: var(--fg-color);
+  font-family: "Lucida Grande";
+  font-size: 94%;
+  border-radius: 10px;
+  border: 2px solid gray;
+  margin-top: 4px;
+}
 a {
   cursor: pointer;
   text-decoration: underline;
@@ -29,4 +38,7 @@ a {
   justify-content: center;
   align-items: center;
   margin-bottom: 3px;
+}
+.state {
+  display: block;
 }
