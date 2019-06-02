@@ -4,7 +4,6 @@ var file = {
   "thumbnail": null,
   "objects": []
 }
-var editorMode = false;
 
 var replaceAll = (s,o,n) => s.split(o).join(n);
 
@@ -169,7 +168,6 @@ function renderScreen() {
       buttonHandler("colorblue",i),
       buttonHandler("colorpurple",i)
     ];
-    if ( editorMode ) labels = [];
     for ( var j = 0; j < labels.length; j++ ) {
       var button = document.createElement("button");
       button.innerText = labels[j];
@@ -181,6 +179,7 @@ function renderScreen() {
     }
     content.appendChild(panel);
     setTimeout(function(index) {
+      if ( objects[index].type != "paragraph" ) return;
       var keys = Object.keys(objects[index].active);
       for ( var j = 3; j < keys.length + 3; j++ ) {
         if ( objects[index].active[keys[j - 3]] ^ objects[index].toggle[keys[j - 3]] ) {
@@ -202,7 +201,7 @@ function addParagraph() {
       "bold": false,
       "italic": false,
       "underline": false,
-      "colorblack": false,
+      "colorblack": true,
       "colorred": false,
       "colororange": false,
       "coloryellow": false,
