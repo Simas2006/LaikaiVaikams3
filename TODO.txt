@@ -3,6 +3,7 @@ Re-open files + make edits
 Italics + underlines
 Colored text
 Change file state button
+Auto-set color to black + fix lines and pictures
 
 TO DO:
 Leave comments on articles (hard)
