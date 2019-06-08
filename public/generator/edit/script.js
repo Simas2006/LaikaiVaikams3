@@ -178,17 +178,18 @@ function renderScreen() {
       panel.appendChild(button);
     }
     content.appendChild(panel);
-    setTimeout(function(index) {
-      if ( objects[index].type != "paragraph" ) return;
-      var keys = Object.keys(objects[index].active);
-      for ( var j = 3; j < keys.length + 3; j++ ) {
-        if ( objects[index].active[keys[j - 3]] ^ objects[index].toggle[keys[j - 3]] ) {
-          document.getElementById(`label${j}:${index}`).classList.add("active");
-        } else {
-          document.getElementById(`label${j}:${index}`).classList.remove("active");
+    if ( objects[i].type == "paragraph" ) {
+      setTimeout(function(index) {
+        var keys = Object.keys(objects[index].active);
+        for ( var j = 3; j < keys.length + 3; j++ ) {
+          if ( objects[index].active[keys[j - 3]] ^ objects[index].toggle[keys[j - 3]] ) {
+            document.getElementById(`label${j}:${index}`).classList.add("active");
+          } else {
+            document.getElementById(`label${j}:${index}`).classList.remove("active");
+          }
         }
-      }
-    }.bind(null,i),10);
+      }.bind(null,i),10);
+    }
   }
 }
 
