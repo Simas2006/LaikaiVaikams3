@@ -50,6 +50,46 @@ td {
 #title {
   text-align: center;
 }
+#comments {
+  border: 1px solid #aaaaaa;
+  margin-top: 20px;
+}
+#comments * {
+  margin-top: 5px;
+  margin-left: 5px;
+  margin-right: 5px;
+  font-size: 90%;
+}
+#comment-box {
+  width: calc(100% - 15px);
+  margin-bottom: 0;
+}
+#comment-post-container {
+  text-align: right;
+  margin-top: 0;
+}
+#comment-post {
+  font-size: 100%;
+  font-family: "Lucida Grande";
+  margin-top: 0;
+  background-color: #4286f4;
+  color: white;
+}
+#comment-name {
+  margin-top: 0;
+}
+#comment-limit {
+  font-size: 70%;
+}
+#comments .line {
+  width: calc(100% - 15px);
+  height: 0;
+  border: 1px solid #cccccc;
+}
+#comments .comment-content {
+  margin-left: 1.5em;
+  word-wrap: break-word;
+}
 .blacklink {
   color: var(--fg-color);
 }
