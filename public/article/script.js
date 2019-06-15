@@ -26,19 +26,30 @@ function renderFile(file) {
   }
 }
 
-function renderComments(comments) {
-  for ( var i = 0; i < comments.length; i++ ) {
-    var div = document.createElement("div");
-    div.className = "comment";
-    var name = document.createElement("b");
-    name.innerText = `${comments[i].name} sako:`;
-    div.appendChild(name);
-    var content = document.createElement("p");
-    content.className = "comment-content";
-    content.innerText = comments[i].content;
-    div.appendChild(content);
-    document.getElementById("comments").appendChild(div);
+function renderComments() {
+  var req = new XMLHttpRequest();
+  req.onload = function() {
+    if ( this.responseText == "Bad Request" ) {
+      alert("Failed to load the article. Please try again.");
+      return;
+    }
+    var comments = JSON.parse(this.responseText);
+    if ( ! comments ) return;
+    for ( var i = 0; i < comments.length; i++ ) {
+      var div = document.createElement("div");
+      div.className = "comment";
+      var name = document.createElement("b");
+      name.innerText = `${comments[i].name} sako:`;
+      div.appendChild(name);
+      var content = document.createElement("p");
+      content.className = "comment-content";
+      content.innerText = comments[i].content;
+      div.appendChild(content);
+      document.getElementById("comments").appendChild(div);
+    }
   }
+  req.open("GET",`/server_access/get_comments.php?file=${sessionStorage.getItem("file")}&index=${sessionStorage.getItem("index")}`);
+  req.send();
 }
 
 function queryFile(callback) {
@@ -56,14 +67,5 @@ function queryFile(callback) {
 
 window.onload = function() {
   queryFile(renderFile);
-  renderComments([
-    {
-      "name": "Sage<script>alert('xss1')</script>",
-      "content": "u294798274897238534589347895734895739848947238947983247892374890232u294798274897238534589347895734895739848947238947983247892374890232\nsage"
-    },
-    {
-      "name": "pupbup",
-      "content": "sage\nsage\nsage<script>alert('xss2')</script>\nsage"
-    },
-  ])
+  renderComments();
 }
