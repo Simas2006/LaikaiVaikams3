@@ -29,10 +29,7 @@ function renderFile(file) {
 function renderComments() {
   var req = new XMLHttpRequest();
   req.onload = function() {
-    if ( this.responseText == "Bad Request" ) {
-      alert("Failed to load the article. Please try again.");
-      return;
-    }
+    if ( this.responseText == "Bad Request" ) return;
     var comments = JSON.parse(this.responseText);
     if ( ! comments ) return;
     for ( var i = 0; i < comments.length; i++ ) {
@@ -50,6 +47,44 @@ function renderComments() {
   }
   req.open("GET",`/server_access/get_comments.php?file=${sessionStorage.getItem("file")}&index=${sessionStorage.getItem("index")}`);
   req.send();
+}
+
+function commentCharTrigger() {
+  var length = document.getElementById("comment-box").value.length;
+  document.getElementById("comment-limit").innerText = `${250 - length} raidziu liko`;
+  document.getElementById("comment-limit").style.color = 250 - length < 0 ? "red" : "black";
+}
+
+function postComment() {
+  var content = document.getElementById("comment-box").value;
+  var name = document.getElementById("comment-name").value;
+  if ( content.length > 250 ) {
+    alert("Komentaras negali but ilgesnis nei 250 raidziu!");
+    return;
+  }
+  if ( name.length > 50 ) {
+    alert("Vardas negali but ilgesnis nei 50 raidziu!");
+    return;
+  }
+  if ( ! content ) {
+    alert("Reikia parasyt komentara!");
+    return;
+  }
+  if ( ! name ) {
+    alert("Reikia parasyt varda!");
+    return;
+  }
+  var req = new XMLHttpRequest();
+  req.onload = function() {
+    alert(this.responseText);
+    if ( this.responseText == "Bad Request" ) {
+      alert("Failed to load the article. Please try again.");
+      return;
+    }
+    renderComments();
+  }
+  req.open("POST",`/server_access/send_comment.php?file=${sessionStorage.getItem("file")}&index=${sessionStorage.getItem("index")}&name=${name}`);
+  req.send(content);
 }
 
 function queryFile(callback) {
