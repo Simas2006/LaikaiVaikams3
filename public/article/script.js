@@ -32,6 +32,10 @@ function renderComments() {
     if ( this.responseText == "Bad Request" ) return;
     var comments = JSON.parse(this.responseText);
     if ( ! comments ) return;
+    var commentDiv = document.getElementById("comments");
+    while ( commentDiv.lastChild.className == "comment" ) {
+      commentDiv.removeChild(commentDiv.lastChild);
+    }
     for ( var i = 0; i < comments.length; i++ ) {
       var div = document.createElement("div");
       div.className = "comment";
@@ -42,7 +46,7 @@ function renderComments() {
       content.className = "comment-content";
       content.innerText = comments[i].content;
       div.appendChild(content);
-      document.getElementById("comments").appendChild(div);
+      commentDiv.appendChild(div);
     }
   }
   req.open("GET",`/server_access/get_comments.php?file=${sessionStorage.getItem("file")}&index=${sessionStorage.getItem("index")}`);
@@ -76,7 +80,6 @@ function postComment() {
   }
   var req = new XMLHttpRequest();
   req.onload = function() {
-    alert(this.responseText);
     if ( this.responseText == "Bad Request" ) {
       alert("Failed to load the article. Please try again.");
       return;
