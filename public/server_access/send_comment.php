@@ -8,7 +8,9 @@ $obj = @fopen($path,"r") or die("Bad Request");
 $jsonObj = json_decode(fread($obj,filesize($path)));
 
 $comment = (object) ["name" => $_GET["name"],"content" => $data];
+if ( ! property_exists($jsonObj,$_GET["file"] . "_" . $_GET["index"]) ) $jsonObj->{$_GET["file"] . "_" . $_GET["index"]} = [];
 array_unshift($jsonObj->{$_GET["file"] . "_" . $_GET["index"]},$comment);
+
 fclose($obj);
 $obj = @fopen($path,"w") or die("Bad Request");
 fwrite($obj,json_encode($jsonObj));
