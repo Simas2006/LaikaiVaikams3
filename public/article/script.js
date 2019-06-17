@@ -81,9 +81,11 @@ function postComment() {
   var req = new XMLHttpRequest();
   req.onload = function() {
     if ( this.responseText == "Bad Request" ) {
-      alert("Failed to load the article. Please try again.");
+      alert("Failed to post the comment. Please try again.");
       return;
     }
+    document.getElementById("comment-box").value = "";
+    document.getElementById("comment-name").value = "";
     renderComments();
   }
   req.open("POST",`/server_access/send_comment.php?file=${sessionStorage.getItem("file")}&index=${sessionStorage.getItem("index")}&name=${name}`);
