@@ -4,12 +4,12 @@ Italics + underlines
 Colored text
 Change file state button
 Auto-set color to black + fix lines and pictures
-
+Leave comments on articles
+Change border to mint
 TO DO:
-Leave comments on articles (hard)
-Self-upload mechanism (hard)
-Add links into articles (external + to glossary tab) (medium)
-Glossary in block (medium)
-Change border to mint (easy)
-Fix archive color (easy)
-Pick random article for largest slot (easy)
+Fix archive color (easy) [2]
+Pick random article for largest slot (easy) [2]
+Add change state button to editor (easy-medium) [3]
+Self-upload mechanism (hard) [4]
+Add links into articles (external + to glossary tab) (medium) [5]
+Glossary in block (medium) [5]
