@@ -2,6 +2,8 @@ var articles;
 
 function renderMenu(edition) {
   articles = edition.articles;
+  var shuffleIndex = Math.floor(Math.random() * 6);
+  [articles[shuffleIndex],articles[0]] = [articles[0],articles[shuffleIndex]];
   var loadedValues = [];
   for ( var i = 0; i < articles.length; i++ ) {
     var obj = document.getElementById("article" + (i + 1));
