@@ -327,7 +327,6 @@ window.onload = function() {
     } else {
       file = JSON.parse(this.responseText);
       document.getElementById("title").value = file.title;
-      document.getElementById("edition").value = file.edition;
       if ( file.thumbnail ) document.getElementById("thumbnailButton").innerText = "Nustatyt Paveiksla ✓";
       for ( var i = 0; i < file.objects.length; i++ ) {
         if ( file.objects[i].type == "paragraph" ) {
@@ -343,8 +342,5 @@ window.onload = function() {
   req.send();
   document.getElementById("title").onchange = function() {
     file.title = this.value;
-  }
-  document.getElementById("edition").onchange = function() {
-    file.edition = this.value;
   }
 }

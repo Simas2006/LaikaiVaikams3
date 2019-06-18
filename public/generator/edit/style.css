@@ -8,6 +8,9 @@ img {
   width: 36.5vw;
   height: auto;
 }
+a {
+  color: var(--link-color);
+}
 input,.paragraph {
   border-top: 0;
   border-left: 0;
@@ -48,11 +51,11 @@ hr.hline {
 #thumbnailButton {
   font-family: "Lucida Grande";
 }
-#title,#edition {
+#title,#returnLink {
   font-weight: normal;
   margin: 0;
 }
-#left-header,#edition {
+#left-header,#returnLink {
   display: inline;
 }
 #title {
@@ -64,7 +67,7 @@ hr.hline {
   font-size: 105%;
   background-color: var(--bg-color);
 }
-#edition {
+#returnLink {
   text-align: right;
   float: right;
   width: 33%;
