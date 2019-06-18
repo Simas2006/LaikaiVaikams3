@@ -1,1 +1,1 @@
-{"2019_sausio_1":[],"2019_vasario_2":[{"name": "Sage<script>alert('xss1')</script>","content": "these are woooooords"},{"name": "pupbup","content": "sage\nsage\nsage<script>alert('xss2')</script>\nsage"}],"2019_vasario_3":[]}
+{"2019_vasario_2":[{"name":"noxss","content":"<script>alert(\"hi\")<\/script>"},{"name":"htcw","content":"hooray the comments work"}],"2019_sausio_0":[{"name":"pupbup","content":"i am also havadog"}]}

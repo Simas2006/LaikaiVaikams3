@@ -6,10 +6,11 @@ Change file state button
 Auto-set color to black + fix lines and pictures
 Leave comments on articles
 Change border to mint
+Pick random article for largest slot
+Self-upload mechanism
+
 TO DO:
 Fix archive color (easy) [2]
-Pick random article for largest slot (easy) [2]
-Add change state button to editor (easy-medium) [3]
-Self-upload mechanism (hard) [4]
+Add change state button to editor (easy-medium) [4]
 Add links into articles (external + to glossary tab) (medium) [5]
 Glossary in block (medium) [5]

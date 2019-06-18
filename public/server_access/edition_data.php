@@ -32,7 +32,7 @@ foreach ( $manifestObj as $entry ) {
   if ( $entry -> file == $file ) $manifestEntry = $entry;
 }
 $outputObj = (object) [
-  "edition" => $jsonObj[0] -> edition,
+  "edition" => $manifestEntry -> edition,
   "timestamp" => $manifestEntry -> timestamp,
   "articles" => $articleArr
 ];
