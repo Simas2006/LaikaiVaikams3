@@ -8,9 +8,16 @@ Leave comments on articles
 Change border to mint
 Pick random article for largest slot
 Self-upload mechanism
+Add return to home in editor
+Retrieve edition field from manifest on load
+Remove edition field from all files
+Add green as valid color
+Fix archive color
 
 TO DO:
-Fix archive color (easy) [2]
-Add change state button to editor (easy-medium) [4]
-Add links into articles (external + to glossary tab) (medium) [5]
-Glossary in block (medium) [5]
+Add links into articles (external + to glossary tab) (medium) [6]
+Glossary in block (medium) [6]
+Cookie policy is wrong [7]
+
+BUGS:
+The whole "bold being on" thing [low priority]

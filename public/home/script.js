@@ -25,7 +25,10 @@ function renderMenu(edition) {
     obj.appendChild(div);
     obj["data-index"] = i;
     obj.onclick = function() {
-      sessionStorage.setItem("index",this["data-index"]);
+      var index = parseInt(this["data-index"]);
+      if ( index == 0 ) index = shuffleIndex;
+      else if ( index == shuffleIndex ) index = 0;
+      sessionStorage.setItem("index",index);
       location.href = "/article/index.html";
     }
     img.onload = function() {
