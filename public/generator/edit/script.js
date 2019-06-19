@@ -34,6 +34,10 @@ function runFormattingFunction(key) {
       document.execCommand("styleWithCSS",false,true);
       document.execCommand("foreColor",false,"yellow");
     },
+    "colorgreen": function() {
+      document.execCommand("styleWithCSS",false,true);
+      document.execCommand("foreColor",false,"#00ff00");
+    },
     "colorlblue": function() {
       document.execCommand("styleWithCSS",false,true);
       document.execCommand("foreColor",false,"#00ddff");
@@ -114,7 +118,7 @@ function renderScreen() {
       }
       div.appendChild(textarea);
       content.appendChild(div);
-      labels = labels.concat(["B","I","U","●","●","●","●","●","●","●"]);
+      labels = labels.concat(["B","I","U","●","●","●","●","●","●","●","●"]);
     } else if ( objects[i].type == "image" ) {
       var p = document.createElement("p");
       p.className = "image";
@@ -164,6 +168,7 @@ function renderScreen() {
       buttonHandler("colorred",i),
       buttonHandler("colororange",i),
       buttonHandler("coloryellow",i),
+      buttonHandler("colorgreen",i),
       buttonHandler("colorlblue",i),
       buttonHandler("colorblue",i),
       buttonHandler("colorpurple",i)
@@ -206,6 +211,7 @@ function addParagraph() {
       "colorred": false,
       "colororange": false,
       "coloryellow": false,
+      "colorgreen": false,
       "colorlblue": false,
       "colorblue": false,
       "colorpurple": false
@@ -218,6 +224,7 @@ function addParagraph() {
       "colorred": false,
       "colororange": false,
       "coloryellow": false,
+      "colorgreen": false,
       "colorlblue": false,
       "colorblue": false,
       "colorpurple": false

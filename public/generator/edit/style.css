@@ -123,11 +123,14 @@ hr.hline {
   color: yellow;
 }
 .label10 {
-  color: #00ddff;
+  color: #00ff00;
 }
 .label11 {
-  color: blue;
+  color: #00ddff;
 }
 .label12 {
+  color: blue;
+}
+.label13 {
   color: purple;
 }
