@@ -24,6 +24,21 @@ function renderFile(file) {
       content.appendChild(document.createElement("hr"));
     }
   }
+  renderGlossary(file);
+}
+
+function renderGlossary(file) {
+  var div = document.getElementById("glossary");
+  for ( var i = 0; i < file.glossary.length; i++ ) {
+    var p = document.createElement("p");
+    var italic = document.createElement("i");
+    italic.innerText = file.glossary[i][0];
+    p.appendChild(italic);
+    var span = document.createElement("span");
+    span.innerText = ": " + file.glossary[i][1];
+    p.appendChild(span);
+    div.appendChild(p);
+  }
 }
 
 function renderComments() {

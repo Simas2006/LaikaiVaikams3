@@ -90,6 +90,9 @@ td {
   margin-left: 1.5em;
   word-wrap: break-word;
 }
+#glossary * {
+  margin: 0;
+}
 .blacklink {
   color: var(--fg-color);
 }
