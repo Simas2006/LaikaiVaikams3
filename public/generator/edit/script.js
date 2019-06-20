@@ -1,9 +1,4 @@
-var file = {
-  "title": "",
-  "edition": "",
-  "thumbnail": null,
-  "objects": []
-}
+var file;
 
 var replaceAll = (s,o,n) => s.split(o).join(n);
 
@@ -265,6 +260,44 @@ function addHorizontal() {
   renderScreen();
 }
 
+function addGlossaryItem(textdata) {
+  var row = document.createElement("tr");
+  var col1 = document.createElement("td");
+  var input1 = document.createElement("input");
+  input1.type = "text";
+  input1.placeholder = "Žodis Lietuviškai";
+  if ( textdata ) input1.value = textdata[0];
+  col1.appendChild(input1);
+  row.appendChild(col1);
+  var col2 = document.createElement("td");
+  var input2 = document.createElement("input");
+  input2.type = "text";
+  input2.placeholder = "Žodis Angliškai";
+  if ( textdata ) input2.value = textdata[1];
+  col2.appendChild(input2);
+  row.appendChild(col2);
+  var col3 = document.createElement("td");
+  var button = document.createElement("button");
+  button.className = "remove";
+  button.innerText = "X";
+  button.onclick = function() {
+    var row = this.parentElement.parentElement;
+    row.parentElement.removeChild(row);
+  }
+  col3.appendChild(button);
+  row.appendChild(col3);
+  document.getElementById("glossary").appendChild(row);
+}
+
+function saveGlossary() {
+  var elements = Array.prototype.slice.call(document.getElementById("glossary").children).slice(1);
+  elements = elements.map(item => [
+    item.children[0].children[0].value,
+    item.children[1].children[0].value
+  ]);
+  file.glossary = elements;
+}
+
 function setThumbnail() {
   if ( file.thumbnail ) {
     file.thumbnail = null;
@@ -307,12 +340,14 @@ function saveFile() {
       objects.push(file.objects[i]);
     }
   }
+  saveGlossary();
   var str = JSON.stringify({
     title: file.title,
     edition: file.edition,
     state: file.state,
     thumbnail: file.thumbnail,
-    objects: objects
+    objects: objects,
+    glossary: file.glossary
   });
   var req = new XMLHttpRequest();
   req.onload = function() {
@@ -341,6 +376,9 @@ window.onload = function() {
           text = replaceAll(text,"\n","<div>");
           file.objects[i].text = text;
         }
+      }
+      for ( var i = 0; i < file.glossary.length; i++ ) {
+        addGlossaryItem(file.glossary[i]);
       }
       renderScreen();
     }

@@ -74,6 +74,29 @@ hr.hline {
   margin: 0;
   font-size: 115%;
 }
+#glossary {
+  font-size: 85%;
+  width: 100%;
+}
+#glossary input {
+  font-size: 100% !important;
+  width: 100% !important;
+}
+#glossary td:first-child,#glossary td:nth-child(1) {
+  width: 45%;
+}
+#glossary td:last-child {
+  width: 10%;
+  text-align: center;
+}
+#glossary button.remove {
+  background-color: red;
+  font-size: 80%;
+}
+#glossary button.add {
+  background-color: #00ff00;
+  font-size: 80%;
+}
 .image {
   text-align: center;
   margin: 0;
