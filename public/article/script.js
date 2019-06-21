@@ -10,7 +10,7 @@ function renderFile(file) {
       var text = objects[i].text;
       for ( var j = 0; j < file.glossary.length; j++ ) {
         text = replaceAll(text,` ${file.glossary[j][0]} `,` <a href="#glossary" class="glossaryLink">${file.glossary[j][0]}</a> `);
-        text = replaceAll(text,`>${file.glossary[j][0]} `,` ><a href="#glossary" class="glossaryLink">${file.glossary[j][0]}</a> `);
+        text = replaceAll(text,`>${file.glossary[j][0]} `,`><a href="#glossary" class="glossaryLink">${file.glossary[j][0]}</a> `);
         text = replaceAll(text,` ${file.glossary[j][0]}<`,` <a href="#glossary" class="glossaryLink">${file.glossary[j][0]}</a><`);
         text = replaceAll(text,`>${file.glossary[j][0]}<`,`><a href="#glossary" class="glossaryLink">${file.glossary[j][0]}</a><`);
       }
