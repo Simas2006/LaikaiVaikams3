@@ -1,3 +1,5 @@
+var replaceAll = (s,o,n) => s.split(o).join(n);
+
 function renderFile(file) {
   document.getElementById("title").innerText = file.title;
   document.getElementById("edition").innerText = file.edition;
@@ -6,6 +8,12 @@ function renderFile(file) {
   for ( var i = 0; i < objects.length; i++ ) {
     if ( objects[i].type == "paragraph" ) {
       var text = objects[i].text;
+      for ( var j = 0; j < file.glossary.length; j++ ) {
+        text = replaceAll(text,` ${file.glossary[j][0]} `,` <a href="#glossary" class="glossaryLink">${file.glossary[j][0]}</a> `);
+        text = replaceAll(text,`>${file.glossary[j][0]} `,` ><a href="#glossary" class="glossaryLink">${file.glossary[j][0]}</a> `);
+        text = replaceAll(text,` ${file.glossary[j][0]}<`,` <a href="#glossary" class="glossaryLink">${file.glossary[j][0]}</a><`);
+        text = replaceAll(text,`>${file.glossary[j][0]}<`,`><a href="#glossary" class="glossaryLink">${file.glossary[j][0]}</a><`);
+      }
       var p = document.createElement("p");
       p.innerHTML = text;
       content.appendChild(p);
