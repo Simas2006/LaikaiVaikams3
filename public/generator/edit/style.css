@@ -124,9 +124,6 @@ hr.hline {
   border: 0;
   height: 2em;
 }
-.active {
-  background-color: #00ff00 !important;
-}
 .label3 {
   font-weight: bold;
 }
