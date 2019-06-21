@@ -81,6 +81,9 @@ td {
 #comment-limit {
   font-size: 70%;
 }
+#comments {
+  margin-top: 0;
+}
 #comments .line {
   width: calc(100% - 15px);
   height: 0;
