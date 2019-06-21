@@ -11,7 +11,7 @@ rename("dev_version.json",$ename . ".json");
 
 $path = "dev_version.json";
 $obj = @fopen($path,"w") or die("Error 2");
-$dev_data = '[{"title":"","state":0,"thumbnail":null,"objects":[]},{"title":"","state":0,"thumbnail":null,"objects":[]},{"title":"","state":0,"thumbnail":null,"objects":[]},{"title":"","state":0,"thumbnail":null,"objects":[]},{"title":"","state":0,"thumbnail":null,"objects":[]},{"title":"","state":0,"thumbnail":null,"objects":[]}]';
+$dev_data = '[{"title":"","state":0,"thumbnail":null,"objects":[],"glossary":[]},{"title":"","state":0,"thumbnail":null,"objects":[],"glossary":[]},{"title":"","state":0,"thumbnail":null,"objects":[],"glossary":[]},{"title":"","state":0,"thumbnail":null,"objects":[],"glossary":[]},{"title":"","state":0,"thumbnail":null,"objects":[],"glossary":[]},{"title":"","state":0,"thumbnail":null,"objects":[],"glossary":[]}]';
 fwrite($obj,$dev_data);
 fclose($obj);
 
