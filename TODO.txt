@@ -15,10 +15,10 @@ Add green as valid color
 Fix archive color
 Glossary in block
 Sample show-off version
+Bold title in editor
+Center images on editor home page
 
 TO DO:
-Move buttons in editor
-Bold title in editor
 Setup SEO files
 Cookie policy is wrong
 

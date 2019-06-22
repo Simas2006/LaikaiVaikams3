@@ -20,6 +20,13 @@ a {
 #menu td {
   width: 33vw;
 }
+#menu td:last-child {
+  text-align: center;
+}
+#menu td:last-child * {
+  margin-left: auto;
+  margin-right: auto;
+}
 #menu tr {
   border-bottom: 1px solid black;
 }
