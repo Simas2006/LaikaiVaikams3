@@ -17,11 +17,9 @@ Glossary in block
 Sample show-off version
 Bold title in editor
 Center images on editor home page
-
-TO DO:
-Setup SEO files
 Cookie policy is wrong
+Setup SEO files
 
--- unimportant for now --
+TO DO: -- unimportant for now --
 Detect glossary words in all cases
 Fully remove formatting-item-highlighting code
