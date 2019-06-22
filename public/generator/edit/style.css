@@ -62,6 +62,7 @@ hr.hline {
   text-align: center;
   width: 100%;
   font-size: 200%;
+  font-weight: bold;
 }
 #left-header > button {
   font-size: 105%;
