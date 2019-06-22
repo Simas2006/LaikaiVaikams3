@@ -17,19 +17,19 @@ function renderMenu() {
     var col2 = document.createElement("td");
     var span = document.createElement("span");
     span.innerText = [
-      "Rasymas vyksta",
-      "Parasytas, reike perziuret",
-      "Perziuretas, reike patvirtinimo",
-      "Paruostas eit i produkcija"
+      "Rašymas vyksta (Writing in progress)",
+      "Parašytas, reikia peržiuret (Written, needs proofreading)",
+      "Peržiuretas, reikia patvirtinimo (Proofread, needs final approval)",
+      "Paruoštas produkcijai (Ready for production)"
     ][articles[i].state];
     span.className = "state";
     col2.appendChild(span);
     if ( articles[i].state < 3 ) {
       var button = document.createElement("button");
       button.innerText = [
-        "Parasytas",
-        "Perziuretas",
-        "Patvirtintas"
+        "Parašytas (Written)",
+        "Peržiuretas (Proofread)",
+        "Patvirtintas (Approved)"
       ][articles[i].state];
       button["data-index"] = i;
       button.onclick = function() {

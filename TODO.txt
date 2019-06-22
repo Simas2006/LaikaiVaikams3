@@ -13,11 +13,15 @@ Retrieve edition field from manifest on load
 Remove edition field from all files
 Add green as valid color
 Fix archive color
+Glossary in block
+Sample show-off version
 
 TO DO:
-Add links into articles (external + to glossary tab) (medium) [6]
-Glossary in block (medium) [6]
-Cookie policy is wrong [7]
+Move buttons in editor
+Bold title in editor
+Setup SEO files
+Cookie policy is wrong
 
-BUGS:
-The whole "bold being on" thing [low priority]
+-- unimportant for now --
+Detect glossary words in all cases
+Fully remove formatting-item-highlighting code
