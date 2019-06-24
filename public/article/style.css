@@ -56,16 +56,21 @@ a.glossaryLink {
 #comments {
   border: 1px solid #aaaaaa;
   margin-top: 20px;
+  background-color: #c6fc02;
 }
 #comments * {
   margin-top: 5px;
   margin-left: 5px;
   margin-right: 5px;
   font-size: 90%;
+  background-color: #c6fc02;
 }
 #comment-box {
   width: calc(100% - 15px);
   margin-bottom: 0;
+}
+#comment-box:invalid {
+  font-weight: bold;
 }
 #comment-post-container {
   text-align: right;
