@@ -1,0 +1,15 @@
+Simple:
+Caption should be bold
+Glossary word bold
+Change comment box color to #c6fc02 + make ka galvoji? bold
+Shrink redakcija to 75%
+Remove Simona + Marija
+
+Meh:
+Tell what proportions images are in
+
+Hard(-ish):
+Make glossary have three entries (word, lt meaning, en meaning)
+View dev_version before publish
+Add paragraph to the right of picture (*text wrapping)
+Align pictures left
