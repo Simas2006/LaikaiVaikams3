@@ -21,7 +21,7 @@ function renderFile(file) {
       img.src = objects[i].src;
       p.appendChild(img);
       p.appendChild(document.createElement("br"));
-      var caption = document.createElement("i");
+      var caption = document.createElement("b");
       caption.innerText = objects[i].caption;
       p.appendChild(caption);
       content.appendChild(p);
@@ -36,9 +36,9 @@ function renderGlossary(file) {
   var div = document.getElementById("glossary");
   for ( var i = 0; i < file.glossary.length; i++ ) {
     var p = document.createElement("p");
-    var italic = document.createElement("i");
-    italic.innerText = file.glossary[i][0];
-    p.appendChild(italic);
+    var bold = document.createElement("b");
+    bold.innerText = file.glossary[i][0];
+    p.appendChild(bold);
     var span = document.createElement("span");
     span.innerText = ": " + file.glossary[i][1];
     p.appendChild(span);
