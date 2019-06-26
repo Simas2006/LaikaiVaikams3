@@ -83,8 +83,8 @@ hr.hline {
   font-size: 100% !important;
   width: 100% !important;
 }
-#glossary td:first-child,#glossary td:nth-child(1) {
-  width: 45%;
+#glossary td:not(:last-child) {
+  width: 30%;
 }
 #glossary td:last-child {
   width: 10%;

@@ -40,8 +40,11 @@ function renderGlossary(file) {
     bold.innerText = file.glossary[i][0];
     p.appendChild(bold);
     var span = document.createElement("span");
-    span.innerText = ": " + file.glossary[i][1];
+    span.innerText = `: ${file.glossary[i][1]}; `;
     p.appendChild(span);
+    var italic = document.createElement("i");
+    italic.innerText = file.glossary[i][2];
+    p.appendChild(italic);
     div.appendChild(p);
   }
 }

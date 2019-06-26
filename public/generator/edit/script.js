@@ -272,11 +272,18 @@ function addGlossaryItem(textdata) {
   var col2 = document.createElement("td");
   var input2 = document.createElement("input");
   input2.type = "text";
-  input2.placeholder = "Žodis Angliškai";
+  input2.placeholder = "Žodžio Reikšmė";
   if ( textdata ) input2.value = textdata[1];
   col2.appendChild(input2);
   row.appendChild(col2);
   var col3 = document.createElement("td");
+  var input3 = document.createElement("input");
+  input3.type = "text";
+  input3.placeholder = "Žodis Angliškai";
+  if ( textdata ) input3.value = textdata[2];
+  col3.appendChild(input3);
+  row.appendChild(col3);
+  var col4 = document.createElement("td");
   var button = document.createElement("button");
   button.className = "remove";
   button.innerText = "X";
@@ -284,8 +291,8 @@ function addGlossaryItem(textdata) {
     var row = this.parentElement.parentElement;
     row.parentElement.removeChild(row);
   }
-  col3.appendChild(button);
-  row.appendChild(col3);
+  col4.appendChild(button);
+  row.appendChild(col4);
   document.getElementById("glossary").appendChild(row);
 }
 
@@ -293,7 +300,8 @@ function saveGlossary() {
   var elements = Array.prototype.slice.call(document.getElementById("glossary").children).slice(1);
   elements = elements.map(item => [
     item.children[0].children[0].value,
-    item.children[1].children[0].value
+    item.children[1].children[0].value,
+    item.children[2].children[0].value
   ]);
   file.glossary = elements;
 }
