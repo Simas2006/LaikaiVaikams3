@@ -333,7 +333,7 @@ function setThumbnail() {
   picker.click();
 }
 
-function saveFile() {
+function saveFile(callback) {
   var objects = [];
   for ( var i = 0; i < file.objects.length; i++ ) {
     if ( file.objects[i].type == "paragraph" ) {
@@ -363,9 +363,17 @@ function saveFile() {
       alert("Failed to save the article. Please try again.");
       return;
     }
+    if ( callback ) callback();
   }
   req.open("POST",`/generator/server_access/save_dev_article.php?index=${sessionStorage.getItem("index")}`);
   req.send(str);
+}
+
+function showDevVersion() {
+  saveFile(function() {
+    sessionStorage.setItem("file","dev_version");
+    location.href = "/article/index.html";
+  });
 }
 
 window.onload = function() {

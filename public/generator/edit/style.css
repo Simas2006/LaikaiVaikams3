@@ -48,14 +48,10 @@ hr.hline {
   border: 1px solid #dddddd;
   font-family: "Lucida Grande";
 }
-#thumbnailButton {
+#thumbnailButton,#viewButton {
   font-family: "Lucida Grande";
 }
-#title,#returnLink {
-  font-weight: normal;
-  margin: 0;
-}
-#left-header,#returnLink {
+#left-header,#viewButton {
   display: inline;
 }
 #title {
@@ -63,17 +59,16 @@ hr.hline {
   width: 100%;
   font-size: 200%;
   font-weight: bold;
+  margin: 0;
 }
-#left-header > button {
+#thumbnailButton,#viewButton {
   font-size: 105%;
   background-color: var(--bg-color);
 }
-#returnLink {
+#viewButton {
   text-align: right;
   float: right;
-  width: 33%;
   margin: 0;
-  font-size: 115%;
 }
 #glossary {
   font-size: 85%;

@@ -123,6 +123,12 @@ function queryFile(callback) {
       return;
     }
     callback(JSON.parse(this.responseText));
+    if ( sessionStorage.getItem("file") == "dev_version" ) {
+      document.getElementById("returnLink").innerText = "↵ Atgal";
+      document.getElementById("returnLink").href = "/generator/edit/index.html";
+      document.getElementById("edition").innerText = "Dar ne produkcijoj";
+      document.getElementById("comments").style.display = "none";
+    }
   }
   req.open("GET",`/server_access/article_data.php?file=${sessionStorage.getItem("file")}&index=${sessionStorage.getItem("index")}`);
   req.send();
