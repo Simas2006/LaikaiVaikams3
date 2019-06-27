@@ -404,4 +404,8 @@ window.onload = function() {
   document.getElementById("title").onchange = function() {
     file.title = this.value;
   }
+  if ( sessionStorage.getItem("reloadfromsave") ) {
+    sessionStorage.removeItem("reloadfromsave");
+    location.reload();
+  }
 }
