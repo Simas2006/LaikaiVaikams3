@@ -2,16 +2,17 @@ DONE:
 Change comment box color to #c6fc02 + make ka galvoji? bold
 Grow redakcija to 75%
 Remove Simona + Marija
-
-Simple:
 Caption should be bold
 Glossary word bold
-
-Meh:
 Email what proportions images are in
-
-Hard(-ish):
 Make glossary have three entries (word, lt meaning, en meaning (en meaning in italics))
 View dev_version before publish
+Change copyright date to 2019
+
+Hard(-ish):
 Add paragraph to the right of picture (*text wrapping)
 Align pictures left
+
+WIDTH: 25vw - 16px
+HEIGHT: 16.5vw
+RATIO: width/height = 1.485/1
