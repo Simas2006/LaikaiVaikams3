@@ -54,6 +54,7 @@ function runFormattingFunction(key) {
 function renderScreen() {
   function buttonHandler(key,index) {
     return function() {
+      console.log(key,index);
       var obj = file.objects[this["data-object-index"]];
       if ( key.startsWith("color") ) {
         var keys = Object.keys(obj.active);
@@ -81,6 +82,7 @@ function renderScreen() {
   }
   var content = document.getElementById("content");
   var objects = file.objects;
+  var imageTable;
   while ( content.firstChild ) {
     content.removeChild(content.firstChild);
   }
@@ -112,9 +114,15 @@ function renderScreen() {
         objects[this["data-object-index"]].focused = false;
       }
       div.appendChild(textarea);
-      content.appendChild(div);
+      (imageTable || content).appendChild(div);
       labels = labels.concat(["B","I","U","●","●","●","●","●","●","●","●"]);
     } else if ( objects[i].type == "image" ) {
+      var table = document.createElement("table");
+      table.className = "imageTable";
+      var row = document.createElement("tr");
+      row.className = "imageRow";
+      var col = document.createElement("td");
+      col.className = "imageCol";
       var p = document.createElement("p");
       p.className = "image";
       var img = document.createElement("img");
@@ -130,7 +138,14 @@ function renderScreen() {
         objects[this["data-object-index"]].caption = this.value;
       }
       p.appendChild(caption);
-      content.appendChild(p);
+      col.appendChild(p);
+      row.appendChild(col);
+      table.appendChild(row);
+      content.appendChild(table);
+      var paragraphCol = document.createElement("td");
+      paragraphCol.className = "imageCol";
+      row.appendChild(paragraphCol);
+      imageTable = paragraphCol;
     } else if ( objects[i].type == "hline" ) {
       var hr = document.createElement("hr");
       hr.className = "hline";
@@ -140,20 +155,36 @@ function renderScreen() {
     panel.className = "buttonPanel";
     var functions = [
       function() {
-        var element = objects[this["data-object-index"]];
-        objects.splice(this["data-object-index"],1);
-        objects.splice(Math.max(this["data-object-index"] - 1,0),0,element);
+        var index = this["data-object-index"];
+        var elements = [objects[index]];
+        if ( elements[0].type == "image" ) elements.push(objects[index + 1]);
+        var prevObjectIndex = index - 1;
+        var subtractIndex = 1;
+        if ( prevObjectIndex < 0 ) return;
+        if ( prevObjectIndex - 1 >= 0 && objects[prevObjectIndex - 1].type == "image" ) subtractIndex = 2;
+        objects.splice(index,1);
+        if ( elements.length >= 2 ) objects.splice(index,1);
+        objects.splice(index - subtractIndex,0,elements[0]);
+        if ( elements.length >= 2 ) objects.splice(index - subtractIndex + 1,0,elements[1]);
+        renderScreen();
+      },
+      function() {
+        var index = this["data-object-index"];
+        var elements = [objects[index]];
+        if ( elements[0].type == "image" ) elements.push(objects[index + 1]);
+        var nextObjectIndex = index + elements.length;
+        var addIndex = 1;
+        if ( nextObjectIndex >= objects.length ) return;
+        if ( objects[nextObjectIndex].type == "image" ) addIndex = 2;
+        objects.splice(index,1);
+        if ( elements.length >= 2 ) objects.splice(index,1);
+        objects.splice(index + addIndex,0,elements[0]);
+        if ( elements.length >= 2 ) objects.splice(index + addIndex + 1,0,elements[1]);
         renderScreen();
       },
       function() {
         var element = objects[this["data-object-index"]];
-        objects.splice(this["data-object-index"],1);
-        objects.splice(Math.min(this["data-object-index"] + 1,objects.length),0,element);
-        renderScreen();
-      },
-      function() {
-        var element = objects[this["data-object-index"]];
-        objects.splice(this["data-object-index"],1);
+        objects.splice(this["data-object-index"],element.type == "image" ? 2 : 1);
         renderScreen();
       },
       buttonHandler("bold",i),
@@ -168,16 +199,26 @@ function renderScreen() {
       buttonHandler("colorblue",i),
       buttonHandler("colorpurple",i)
     ];
+    var isImagePara = objects[i].type == "paragraph" && imageTable;
+    if ( isImagePara ) {
+      labels = labels.slice(3);
+      functions = functions.slice(3);
+    }
     for ( var j = 0; j < labels.length; j++ ) {
       var button = document.createElement("button");
       button.innerText = labels[j];
       button["data-object-index"] = i;
-      button.className = `label${j}`;
-      button.id = `label${j}:${i}`
+      button.className = `label${j + (isImagePara ? 3 : 0)}`;
+      button.id = `label${j + (isImagePara ? 3 : 0)}:${i}`
       button.onclick = functions[j];
       panel.appendChild(button);
     }
-    content.appendChild(panel);
+    if ( isImagePara ) {
+      imageTable.appendChild(panel);
+      imageTable = null;
+    } else {
+      content.appendChild(panel);
+    }
     if ( objects[i].type == "paragraph" ) {
       setTimeout(function(index) {
         var keys = Object.keys(objects[index].active);
@@ -238,6 +279,37 @@ function addImage() {
         "type": "image",
         "src": reader.result,
         "caption": ""
+      });
+      file.objects.push({
+        "type": "paragraph",
+        "text": "",
+        "focused": false,
+        "active": {
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "colorblack": true,
+          "colorred": false,
+          "colororange": false,
+          "coloryellow": false,
+          "colorgreen": false,
+          "colorlblue": false,
+          "colorblue": false,
+          "colorpurple": false
+        },
+        "toggle": {
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "colorblack": false,
+          "colorred": false,
+          "colororange": false,
+          "coloryellow": false,
+          "colorgreen": false,
+          "colorlblue": false,
+          "colorblue": false,
+          "colorpurple": false
+        }
       });
       renderScreen();
     }

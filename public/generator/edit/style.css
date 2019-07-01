@@ -93,7 +93,15 @@ hr.hline {
   background-color: #00ff00;
   font-size: 80%;
 }
+.imageTable,.imageRow {
+  width: 100%;
+}
+.imageCol {
+  width: 50%;
+  vertical-align: top;
+}
 .image {
+  width: 100%;
   text-align: center;
   margin: 0;
 }
