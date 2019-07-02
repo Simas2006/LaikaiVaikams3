@@ -5,6 +5,7 @@ function renderFile(file) {
   document.getElementById("edition").innerText = file.edition;
   var objects = file.objects;
   var content = document.getElementById("content");
+  var imageBox;
   for ( var i = 0; i < objects.length; i++ ) {
     if ( objects[i].type == "paragraph" ) {
       var text = objects[i].text;
@@ -13,18 +14,30 @@ function renderFile(file) {
       }
       var p = document.createElement("p");
       p.innerHTML = text;
-      content.appendChild(p);
+      p.className = "paragraph";
+      (imageBox || content).appendChild(p);
+      imageBox = null;
     } else if ( objects[i].type == "image" ) {
-      var p = document.createElement("p");
-      p.className = "image";
+      var table = document.createElement("table");
+      table.className = "imageTable";
+      var row = document.createElement("tr");
+      row.className = "imageRow";
+      var col = document.createElement("td");
+      col.className = "imageCol";
       var img = document.createElement("img");
       img.src = objects[i].src;
-      p.appendChild(img);
-      p.appendChild(document.createElement("br"));
+      col.appendChild(img);
+      col.appendChild(document.createElement("br"));
       var caption = document.createElement("b");
       caption.innerText = objects[i].caption;
-      p.appendChild(caption);
-      content.appendChild(p);
+      col.appendChild(caption);
+      row.appendChild(col);
+      table.appendChild(row);
+      content.appendChild(table);
+      var paragraphCol = document.createElement("td");
+      paragraphCol.className = "imageCol";
+      row.appendChild(paragraphCol);
+      imageBox = paragraphCol;
     } else if ( objects[i].type == "hline" ) {
       content.appendChild(document.createElement("hr"));
     }
