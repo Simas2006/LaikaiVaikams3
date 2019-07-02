@@ -8,7 +8,7 @@ function renderFile(file) {
   var imageBox;
   for ( var i = 0; i < objects.length; i++ ) {
     if ( objects[i].type == "paragraph" ) {
-      var text = objects[i].text;
+      var text = replaceAll(objects[i].text,"\n","<br />");
       for ( var j = 0; j < file.glossary.length; j++ ) {
         text = replaceAll(text,`${file.glossary[j][0]}`,`<a href="#glossary" class="glossaryLink">${file.glossary[j][0]}</a>`);
       }
