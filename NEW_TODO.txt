@@ -8,9 +8,7 @@ Email what proportions images are in
 Make glossary have three entries (word, lt meaning, en meaning (en meaning in italics))
 View dev_version before publish
 Change copyright date to 2019
-
-Hard(-ish):
-Add paragraph to the right of picture (*text wrapping)
+Add paragraph to the right of picture (*text wrapping*)
 Align pictures left
 
 WIDTH: 25vw - 16px
