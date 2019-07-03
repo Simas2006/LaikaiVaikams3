@@ -10,7 +10,10 @@ function renderFile(file) {
     if ( objects[i].type == "paragraph" ) {
       var text = replaceAll(objects[i].text,"\n","<br />");
       for ( var j = 0; j < file.glossary.length; j++ ) {
-        text = replaceAll(text,`${file.glossary[j][0]}`,`<a href="#glossary" class="glossaryLink">${file.glossary[j][0]}</a>`);
+        var firstLetter = file.glossary[j][0].charAt(0);
+        var restOfWord = file.glossary[j][0].slice(1);
+        text = replaceAll(text,`${firstLetter.toLowerCase() + restOfWord}`,`<a href="#glossary" class="glossaryLink">${firstLetter.toLowerCase() + restOfWord}</a>`);
+        text = replaceAll(text,`${firstLetter.toUpperCase() + restOfWord}`,`<a href="#glossary" class="glossaryLink">${firstLetter.toUpperCase() + restOfWord}</a>`);
       }
       var p = document.createElement("p");
       p.innerHTML = text;
