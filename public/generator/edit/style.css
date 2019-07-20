@@ -127,6 +127,7 @@ hr.hline {
   background-color: var(--bg-color);
   border: 0;
   height: 2em;
+  font-size: 75%;
 }
 .label3 {
   font-weight: bold;
