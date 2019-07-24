@@ -54,7 +54,6 @@ function runFormattingFunction(key) {
 function renderScreen() {
   function buttonHandler(key,index) {
     return function() {
-      console.log(key,index);
       var obj = file.objects[this["data-object-index"]];
       if ( key.startsWith("color") ) {
         var keys = Object.keys(obj.active);
@@ -127,6 +126,8 @@ function renderScreen() {
       p.className = "image";
       var img = document.createElement("img");
       img.src = objects[i].src;
+      img.style.width = (objects[i].size * .365 || 36.5) + "vw";
+      img.id = "image" + i;
       p.appendChild(img);
       p.appendChild(document.createElement("br"));
       var caption = document.createElement("input");
@@ -230,6 +231,19 @@ function renderScreen() {
           }
         }
       }.bind(null,i),10);
+    } else if ( objects[i].type == "image" ) {
+      var slider = document.createElement("input");
+      slider.type = "range";
+      slider.min = "1";
+      slider.max = "100";
+      slider.value = objects[i].size;
+      slider["data-object-index"] = i;
+      slider.oninput = function() {
+        objects[this["data-object-index"]].size = this.value;
+        document.getElementById("image" + this["data-object-index"]).style.width = (this.value * .365 || 36.5) + "vw";
+      }
+      slider.onmouseup = renderScreen;
+      panel.appendChild(slider);
     }
   }
 }
@@ -278,7 +292,8 @@ function addImage() {
       file.objects.push({
         "type": "image",
         "src": reader.result,
-        "caption": ""
+        "caption": "",
+        "size": 100
       });
       file.objects.push({
         "type": "paragraph",
