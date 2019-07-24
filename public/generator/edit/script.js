@@ -236,7 +236,7 @@ function renderScreen() {
       slider.type = "range";
       slider.min = "1";
       slider.max = "100";
-      slider.value = objects[i].size;
+      slider.value = objects[i].size || "100";
       slider["data-object-index"] = i;
       slider.oninput = function() {
         objects[this["data-object-index"]].size = this.value;
