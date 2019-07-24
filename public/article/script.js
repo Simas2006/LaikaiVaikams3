@@ -29,6 +29,7 @@ function renderFile(file) {
       col.className = "imageCol";
       var img = document.createElement("img");
       img.src = objects[i].src;
+      img.style.width = (objects[i].size * .365 || 36.5) + "vw";
       col.appendChild(img);
       col.appendChild(document.createElement("br"));
       var caption = document.createElement("b");
