@@ -88,6 +88,7 @@ p.title-hidden {
   position: fixed;
   right: 0;
   top: 0;
+  background-color: var(--bg-color) !important;
   width: 35vw;
   height: 100vh;
   border-left: 1px solid black;
