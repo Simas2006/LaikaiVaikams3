@@ -46,9 +46,9 @@ function runFormattingFunction(key,index) {
       document.execCommand("foreColor",false,"purple");
     },
   }
-  if ( new Date().getTime() - 50 <= file.objects[index].lastFormatCall ) return;
+  console.log("here2")
+  if ( new Date().getTime() - 50 <= file.objects[index].lastFormatCall ) return console.log("blocked");
   file.objects[index].lastFormatCall = new Date().getTime();
-  console.log(file.objects[index].lastFormatCall)
   setTimeout(function() {
     formattingFunctions[key]();
     file.objects[index].text = document.getElementById("object" + index).innerHTML;
@@ -67,11 +67,7 @@ function renderScreen() {
         }
       }
       runFormattingFunction(key,this["data-object-index"]);
-      if ( obj.focused ) {
-        obj.active[key] = ! obj.active[key];
-      } else {
-        obj.toggle[key] = ! obj.toggle[key];
-      }
+      if ( ! obj.focused ) obj.toggle[key] = ! obj.toggle[key];
     }
   }
   var content = document.getElementById("content");
@@ -98,11 +94,7 @@ function renderScreen() {
         obj.focused = true;
         var keys = Object.keys(obj.toggle);
         for ( var i = 0; i < keys.length; i++ ) {
-          if ( obj.toggle[keys[i]] ) {
-            obj.active[keys[i]] = ! obj.active[keys[i]];
-            obj.toggle[keys[i]] = false;
-            runFormattingFunction(keys[i],this["data-object-index"]);
-          }
+          if ( obj.toggle[keys[i]] ) obj.toggle[keys[i]] = false;
         }
       }
       textarea.onblur = function() {
@@ -216,18 +208,7 @@ function renderScreen() {
     } else {
       content.appendChild(panel);
     }
-    if ( objects[i].type == "paragraph" ) {
-      setTimeout(function(index) {
-        var keys = Object.keys(objects[index].active);
-        for ( var j = 3; j < keys.length + 3; j++ ) {
-          if ( objects[index].active[keys[j - 3]] ^ objects[index].toggle[keys[j - 3]] ) {
-            document.getElementById(`label${j}:${index}`).classList.add("active");
-          } else {
-            document.getElementById(`label${j}:${index}`).classList.remove("active");
-          }
-        }
-      }.bind(null,i),10);
-    } else if ( objects[i].type == "image" ) {
+    if ( objects[i].type == "image" ) {
       var slider = document.createElement("input");
       slider.type = "range";
       slider.min = "1";
@@ -250,19 +231,6 @@ function addParagraph() {
     "text": "",
     "focused": false,
     "lastFormatCall": 0,
-    "active": {
-      "bold": false,
-      "italic": false,
-      "underline": false,
-      "colorblack": true,
-      "colorred": false,
-      "colororange": false,
-      "coloryellow": false,
-      "colorgreen": false,
-      "colorlblue": false,
-      "colorblue": false,
-      "colorpurple": false
-    },
     "toggle": {
       "bold": false,
       "italic": false,
@@ -297,19 +265,6 @@ function addImage() {
         "text": "",
         "focused": false,
         "lastFormatCall": 0,
-        "active": {
-          "bold": false,
-          "italic": false,
-          "underline": false,
-          "colorblack": true,
-          "colorred": false,
-          "colororange": false,
-          "coloryellow": false,
-          "colorgreen": false,
-          "colorlblue": false,
-          "colorblue": false,
-          "colorpurple": false
-        },
         "toggle": {
           "bold": false,
           "italic": false,

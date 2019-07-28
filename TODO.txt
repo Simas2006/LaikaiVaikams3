@@ -20,6 +20,4 @@ Center images on editor home page
 Cookie policy is wrong
 Setup SEO files
 Detect glossary words in all cases
-
-TO DO: -- unimportant for now --
 Fully remove formatting-item-highlighting code
