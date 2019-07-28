@@ -2,7 +2,7 @@ var file;
 
 var replaceAll = (s,o,n) => s.split(o).join(n);
 
-function runFormattingFunction(key) {
+function runFormattingFunction(key,index) {
   var formattingFunctions = {
     "bold": function() {
       document.execCommand("bold");
@@ -46,8 +46,12 @@ function runFormattingFunction(key) {
       document.execCommand("foreColor",false,"purple");
     },
   }
+  if ( new Date().getTime() - 50 <= file.objects[index].lastFormatCall ) return;
+  file.objects[index].lastFormatCall = new Date().getTime();
+  console.log(file.objects[index].lastFormatCall)
   setTimeout(function() {
     formattingFunctions[key]();
+    file.objects[index].text = document.getElementById("object" + index).innerHTML;
   },10);
 }
 
@@ -56,26 +60,17 @@ function renderScreen() {
     return function() {
       var obj = file.objects[this["data-object-index"]];
       if ( key.startsWith("color") ) {
-        var keys = Object.keys(obj.active);
+        var keys = Object.keys(obj.toggle);
         for ( var i = 0; i < keys.length; i++ ) {
           if ( ! keys[i].startsWith("color") ) continue;
-          obj.active[keys[i]] = false;
           obj.toggle[keys[i]] = false;
         }
       }
+      runFormattingFunction(key,this["data-object-index"]);
       if ( obj.focused ) {
-        runFormattingFunction(key);
         obj.active[key] = ! obj.active[key];
       } else {
         obj.toggle[key] = ! obj.toggle[key];
-      }
-      var keys = Object.keys(obj.active);
-      for ( var i = 3; i < keys.length + 3; i++ ) {
-        if ( obj.active[keys[i - 3]] ^ obj.toggle[keys[i - 3]] ) {
-          document.getElementById(`label${i}:${index}`).classList.add("active");
-        } else {
-          document.getElementById(`label${i}:${index}`).classList.remove("active");
-        }
       }
     }
   }
@@ -97,6 +92,7 @@ function renderScreen() {
       textarea.innerHTML = objects[i].text;
       textarea.className = "paragraph";
       textarea.contentEditable = "true";
+      textarea.id = "object" + i;
       textarea.onfocus = function() {
         var obj = objects[this["data-object-index"]];
         obj.focused = true;
@@ -105,7 +101,7 @@ function renderScreen() {
           if ( obj.toggle[keys[i]] ) {
             obj.active[keys[i]] = ! obj.active[keys[i]];
             obj.toggle[keys[i]] = false;
-            runFormattingFunction(keys[i]);
+            runFormattingFunction(keys[i],this["data-object-index"]);
           }
         }
       }
@@ -127,7 +123,7 @@ function renderScreen() {
       var img = document.createElement("img");
       img.src = objects[i].src;
       img.style.width = (objects[i].size * .365 || 36.5) + "vw";
-      img.id = "image" + i;
+      img.id = "object" + i;
       p.appendChild(img);
       p.appendChild(document.createElement("br"));
       var caption = document.createElement("input");
@@ -240,7 +236,7 @@ function renderScreen() {
       slider["data-object-index"] = i;
       slider.oninput = function() {
         objects[this["data-object-index"]].size = this.value;
-        document.getElementById("image" + this["data-object-index"]).style.width = (this.value * .365 || 36.5) + "vw";
+        document.getElementById("object" + this["data-object-index"]).style.width = (this.value * .365 || 36.5) + "vw";
       }
       slider.onmouseup = renderScreen;
       panel.appendChild(slider);
@@ -253,6 +249,7 @@ function addParagraph() {
     "type": "paragraph",
     "text": "",
     "focused": false,
+    "lastFormatCall": 0,
     "active": {
       "bold": false,
       "italic": false,
@@ -299,6 +296,7 @@ function addImage() {
         "type": "paragraph",
         "text": "",
         "focused": false,
+        "lastFormatCall": 0,
         "active": {
           "bold": false,
           "italic": false,
