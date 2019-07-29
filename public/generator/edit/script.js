@@ -46,8 +46,7 @@ function runFormattingFunction(key,index) {
       document.execCommand("foreColor",false,"purple");
     },
   }
-  console.log("here2")
-  if ( new Date().getTime() - 50 <= file.objects[index].lastFormatCall ) return console.log("blocked");
+  if ( new Date().getTime() - 50 <= file.objects[index].lastFormatCall ) return;
   file.objects[index].lastFormatCall = new Date().getTime();
   setTimeout(function() {
     formattingFunctions[key]();
