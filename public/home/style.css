@@ -39,7 +39,7 @@ td.article:hover > div.image {
 }
 h2 {
   margin: 0;
-  color: var(--border-color);
+  color: var(--link-color);
 }
 div.image,div.text {
   display: flex;
