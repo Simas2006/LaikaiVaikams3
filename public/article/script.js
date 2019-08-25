@@ -95,7 +95,7 @@ function renderComments() {
 
 function commentCharTrigger() {
   var length = document.getElementById("comment-box").value.length;
-  document.getElementById("comment-limit").innerText = `${250 - length} raidziu liko`;
+  document.getElementById("comment-limit").innerText = `${250 - length} raidžių liko`;
   document.getElementById("comment-limit").style.color = 250 - length < 0 ? "red" : "black";
 }
 
@@ -103,11 +103,11 @@ function postComment() {
   var content = document.getElementById("comment-box").value;
   var name = document.getElementById("comment-name").value;
   if ( content.length > 250 ) {
-    alert("Komentaras negali but ilgesnis nei 250 raidziu!");
+    alert("Komentaras negali but ilgesnis nei 250 raidžių!");
     return;
   }
   if ( name.length > 50 ) {
-    alert("Vardas negali but ilgesnis nei 50 raidziu!");
+    alert("Vardas negali but ilgesnis nei 50 raidžių!");
     return;
   }
   if ( ! content ) {
