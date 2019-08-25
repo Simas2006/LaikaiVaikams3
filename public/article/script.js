@@ -34,6 +34,7 @@ function renderFile(file) {
       col.appendChild(document.createElement("br"));
       var caption = document.createElement("b");
       caption.innerText = objects[i].caption;
+      caption.className = "caption";
       col.appendChild(caption);
       row.appendChild(col);
       table.appendChild(row);

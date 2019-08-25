@@ -135,3 +135,6 @@ a.glossaryLink {
 .imageCol > .paragraph {
   margin: 0 !important;
 }
+.caption {
+  font-size: 75%;
+}
