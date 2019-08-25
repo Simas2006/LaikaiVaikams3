@@ -39,7 +39,7 @@ td.article:hover > div.image {
 }
 h2 {
   margin: 0;
-  color: var(--link-color);
+  color: var(--header-color);
 }
 div.image,div.text {
   display: flex;
@@ -140,6 +140,7 @@ p.title-hidden {
 .slogan {
   font-size: 75%;
   margin: 0;
+  color: var(--header-color);
 }
 .copyright {
   font-size: 75%;
