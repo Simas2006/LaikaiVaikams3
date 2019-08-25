@@ -1,7 +1,7 @@
 body {
   background-color: var(--bg-color);
   color: var(--fg-color);
-  font-family: "Lucida Grande";
+  font-family: "Comic Sans MS";
   font-size: 125%;
 }
 tr {
@@ -130,6 +130,11 @@ p.title-hidden {
   color: red;
   font-weight: bold;
   margin: 0;
+  color: var(--header-color);
+}
+#edition {
+  color: var(--header-color);
+  font-weight: bold;
 }
 .shifting {
   width: 37.5vw;
