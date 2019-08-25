@@ -4,7 +4,7 @@ function renderVersions(list) {
   list = list.reverse();
   var li = document.createElement("li");
   var a = document.createElement("a");
-  a.innerText = "I naujausia versija";
+  a.innerText = "Į naujausią versiją";
   a.onclick = function() {
     sessionStorage.setItem("file","latest");
     location.href = "/home/index.html";
