@@ -1,7 +1,7 @@
 body {
   background-color: var(--bg-color);
   color: var(--fg-color);
-  font-family: "Lucida Grande";
+  font-family: "Comic Sans MS";
   font-size: 125%;
 }
 @media only screen and (max-device-width: 812px) {
@@ -102,6 +102,9 @@ a.glossaryLink {
 }
 #glossary * {
   margin: 0;
+}
+#title,#returnLink,#edition {
+  color: var(--header-color);
 }
 .blacklink {
   color: var(--fg-color);
