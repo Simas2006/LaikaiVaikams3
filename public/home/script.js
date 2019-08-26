@@ -47,7 +47,6 @@ function renderMenu(edition) {
   document.getElementById("edition").innerText = edition.edition;
   var editionInMenu = document.getElementById("edition-inmenu");
   if ( editionInMenu ) document.getElementById("edition-inmenu").innerText = edition.edition;
-  if ( edition.timestamp * 1000 + 1000 * 60 * 60 * 24 * 10 > new Date().getTime() ) document.getElementById("new-version").innerText = "Naujas veidas - tas pats laikraštėlis!";
 }
 
 function queryMenu(callback) {

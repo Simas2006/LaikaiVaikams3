@@ -1,13 +1,13 @@
 body {
   background-color: var(--bg-color);
   color: var(--fg-color);
-  font-family: "Lucida Grande";
+  font-family: "Comic Sans MS";
   font-size: 125%;
 }
 button {
   background-color: var(--bg-color);
   color: var(--fg-color);
-  font-family: "Lucida Grande";
+  font-family: "Comic Sans MS";
   font-size: 94%;
   border-radius: 10px;
   border: 2px solid gray;
