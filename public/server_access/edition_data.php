@@ -17,12 +17,12 @@ $path = "../../editions/" . $file . ".json";
 $obj = @fopen($path,"r") or die("Bad Request");
 $jsonObj = json_decode(fread($obj,filesize($path)));
 fclose($obj);
-$articleArr = [];
+$articleArr = array();
 foreach ( $jsonObj as $article ) {
-  $obj = (object) [
+  $obj = (object) array(
     "title" => $article -> title,
     "thumbnail" => $article -> thumbnail
-  ];
+  );
   $articleArr[] = $obj;
 }
 $obj = @fopen("../../editions/manifest.json","r") or die("Bad Request");
@@ -31,11 +31,11 @@ fclose($obj);
 foreach ( $manifestObj as $entry ) {
   if ( $entry -> file == $file ) $manifestEntry = $entry;
 }
-$outputObj = (object) [
+$outputObj = (object) array(
   "edition" => $manifestEntry -> edition,
   "timestamp" => $manifestEntry -> timestamp,
   "articles" => $articleArr
-];
+);
 if ( $setFile ) $outputObj -> setFile = $file;
 echo json_encode($outputObj);
 ?>

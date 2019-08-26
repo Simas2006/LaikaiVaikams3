@@ -7,8 +7,8 @@ $path = "../../editions/comments.json";
 $obj = @fopen($path,"r") or die("Bad Request");
 $jsonObj = json_decode(fread($obj,filesize($path)));
 
-$comment = (object) ["name" => $_GET["name"],"content" => $data];
-if ( ! property_exists($jsonObj,$_GET["file"] . "_" . $_GET["index"]) ) $jsonObj->{$_GET["file"] . "_" . $_GET["index"]} = [];
+$comment = (object) array("name" => $_GET["name"],"content" => $data);
+if ( ! property_exists($jsonObj,$_GET["file"] . "_" . $_GET["index"]) ) $jsonObj->{$_GET["file"] . "_" . $_GET["index"]} = array();
 array_unshift($jsonObj->{$_GET["file"] . "_" . $_GET["index"]},$comment);
 
 fclose($obj);
