@@ -29,7 +29,7 @@ function renderMenu(edition) {
       if ( index == 0 ) index = shuffleIndex;
       else if ( index == shuffleIndex ) index = 0;
       sessionStorage.setItem("index",index);
-      location.href = "/article/index.html";
+      location.href = "../article/index.html";
     }
     img.onload = function() {
       var index = parseInt(this["data-index"]);
@@ -61,7 +61,7 @@ function queryMenu(callback) {
     if ( data.setFile ) sessionStorage.setItem("file",data.setFile);
     callback(data);
   }
-  req.open("GET",`/server_access/edition_data.php?file=${sessionStorage.getItem("file")}`);
+  req.open("GET",`../server_access/edition_data.php?file=${sessionStorage.getItem("file")}`);
   req.send();
 }
 

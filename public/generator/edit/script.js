@@ -404,14 +404,14 @@ function saveFile(callback) {
     }
     if ( callback ) callback();
   }
-  req.open("POST",`/generator/server_access/save_dev_article.php?index=${sessionStorage.getItem("index")}`);
+  req.open("POST",`../server_access/save_dev_article.php?index=${sessionStorage.getItem("index")}`);
   req.send(str);
 }
 
 function showDevVersion() {
   saveFile(function() {
     sessionStorage.setItem("file","dev_version");
-    location.href = "/article/index.html";
+    location.href = "../../article/index.html";
   });
 }
 
@@ -438,7 +438,7 @@ window.onload = function() {
       renderScreen();
     }
   }
-  req.open("GET",`/generator/server_access/load_dev_article.php?index=${sessionStorage.getItem("index")}`);
+  req.open("GET",`../server_access/load_dev_article.php?index=${sessionStorage.getItem("index")}`);
   req.send();
   document.getElementById("title").onchange = function() {
     file.title = this.value;

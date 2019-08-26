@@ -90,7 +90,7 @@ function renderComments() {
       commentDiv.appendChild(div);
     }
   }
-  req.open("GET",`/server_access/get_comments.php?file=${sessionStorage.getItem("file")}&index=${sessionStorage.getItem("index")}`);
+  req.open("GET",`../server_access/get_comments.php?file=${sessionStorage.getItem("file")}&index=${sessionStorage.getItem("index")}`);
   req.send();
 }
 
@@ -129,7 +129,7 @@ function postComment() {
     document.getElementById("comment-name").value = "";
     renderComments();
   }
-  req.open("POST",`/server_access/send_comment.php?file=${sessionStorage.getItem("file")}&index=${sessionStorage.getItem("index")}&name=${name}`);
+  req.open("POST",`../server_access/send_comment.php?file=${sessionStorage.getItem("file")}&index=${sessionStorage.getItem("index")}&name=${name}`);
   req.send(content);
 }
 
@@ -142,13 +142,13 @@ function queryFile(callback) {
     }
     callback(JSON.parse(this.responseText));
     if ( sessionStorage.getItem("file") == "dev_version" ) {
-      document.getElementById("returnLink").href = "/generator/edit/index.html";
+      document.getElementById("returnLink").href = "../generator/edit/index.html";
       document.getElementById("edition").innerText = "Dar ne produkcijoj";
       document.getElementById("comments").style.display = "none";
       sessionStorage.setItem("reloadfromsave",1);
     }
   }
-  req.open("GET",`/server_access/article_data.php?file=${sessionStorage.getItem("file")}&index=${sessionStorage.getItem("index")}`);
+  req.open("GET",`../server_access/article_data.php?file=${sessionStorage.getItem("file")}&index=${sessionStorage.getItem("index")}`);
   req.send();
 }
 

@@ -10,7 +10,7 @@ function renderMenu() {
     a["data-index"] = i;
     a.onclick = function() {
       sessionStorage.setItem("index",this["data-index"]);
-      location.href = "/generator/edit/index.html";
+      location.href = "../edit/index.html";
     }
     col1.appendChild(a);
     row.appendChild(col1);
@@ -43,7 +43,7 @@ function renderMenu() {
             location.reload();
           }
         }
-        req.open("GET",`/generator/server_access/get_dev_articles.php?index=${this["data-index"]}`);
+        req.open("GET",`../server_access/get_dev_articles.php?index=${this["data-index"]}`);
         req.send();
       }
       col2.appendChild(button);
@@ -77,6 +77,6 @@ window.onload = function() {
       renderMenu();
     }
   }
-  req.open("GET","/generator/server_access/get_dev_articles.php");
+  req.open("GET","../server_access/get_dev_articles.php");
   req.send();
 }
