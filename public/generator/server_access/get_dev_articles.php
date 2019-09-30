@@ -9,13 +9,13 @@ if ( ! is_null($_GET["index"]) && $_GET["index"] != "null" ) {
   fwrite($obj,json_encode($jsonObj));
   fclose($obj);
 }
-$articleArr = [];
+$articleArr = array();
 foreach ( $jsonObj as $article ) {
-  $obj = (object) [
+  $obj = array(
     "title" => $article -> title,
     "thumbnail" => $article -> thumbnail,
     "state" => $article -> state
-  ];
+  );
   $articleArr[] = $obj;
 }
 echo json_encode($articleArr);
